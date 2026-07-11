@@ -423,7 +423,7 @@ export default function PageViews({
                   {/* Browser contents image viewport */}
                   <div className="relative group overflow-hidden bg-slate-900 aspect-video flex items-center justify-center">
                     <img 
-                      src="/src/assets/images/desktop_dashboard_screenshot_1783738865394.jpg" 
+                      src="/desktop_dashboard_screenshot_1783738865394.jpg" 
                       alt="Desktop Dashboard Screenshot"
                       className="w-full h-full object-cover opacity-90 group-hover:scale-[1.02] transition-transform duration-500 pointer-events-none select-none"
                       referrerPolicy="no-referrer"
@@ -487,7 +487,7 @@ export default function PageViews({
                   {/* Phone screen image viewport */}
                   <div className="relative h-full bg-slate-900 overflow-hidden group">
                     <img 
-                      src="/src/assets/images/mobile_app_screenshot_1783738879626.jpg" 
+                      src="/mobile_app_screenshot_1783738879626.jpg" 
                       alt="Mobile App Screenshot"
                       className="w-full h-full object-cover opacity-95 group-hover:scale-[1.03] transition-transform duration-500 pointer-events-none select-none"
                       referrerPolicy="no-referrer"

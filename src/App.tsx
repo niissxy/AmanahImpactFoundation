@@ -293,7 +293,7 @@ export default function App() {
             className="flex items-center gap-2.5 text-left shrink-0 cursor-pointer group"
           >
             <img
-              src="/src/assets/images/amanah_logo_1783746978284.jpg"
+              src="/amanah_logo_1783746978284.jpg"
               alt="Amanah Impact Foundation"
               className="h-10 md:h-12 w-auto object-contain rounded-lg shadow-sm bg-white p-0.5 group-hover:scale-105 transition-transform"
               referrerPolicy="no-referrer"
