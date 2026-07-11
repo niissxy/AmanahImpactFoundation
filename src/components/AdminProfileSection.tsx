@@ -148,7 +148,7 @@ export default function AdminProfileSection({ currentAdmin, setCurrentAdmin, onL
     <div className="space-y-6 max-w-2xl mx-auto animate-in fade-in duration-200">
       
       {/* Tab intro header */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-gray-150 dark:border-gray-700 pb-4">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-gray-200 dark:border-gray-700 pb-4">
         <div>
           <h4 className="text-base font-extrabold text-gray-900 dark:text-white">
             Pengaturan Akun & Profil Amil
@@ -250,7 +250,7 @@ export default function AdminProfileSection({ currentAdmin, setCurrentAdmin, onL
                   required
                   value={name}
                   onChange={(e) => setName(e.target.value)}
-                  className="block w-full pl-9 pr-3 py-2 bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-750 rounded-xl text-xs text-gray-900 dark:text-white focus:ring-1 focus:ring-emerald-500 focus:outline-none focus:bg-white"
+                  className="block w-full pl-9 pr-3 py-2 bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-slate-700 rounded-xl text-xs text-gray-900 dark:text-white focus:ring-1 focus:ring-emerald-500 focus:outline-none focus:bg-white"
                 />
               </div>
             </div>
@@ -268,7 +268,7 @@ export default function AdminProfileSection({ currentAdmin, setCurrentAdmin, onL
                   required
                   value={phone}
                   onChange={(e) => setPhone(e.target.value)}
-                  className="block w-full pl-9 pr-3 py-2 bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-750 rounded-xl text-xs text-gray-900 dark:text-white focus:ring-1 focus:ring-emerald-500 focus:outline-none focus:bg-white"
+                  className="block w-full pl-9 pr-3 py-2 bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-slate-700 rounded-xl text-xs text-gray-900 dark:text-white focus:ring-1 focus:ring-emerald-500 focus:outline-none focus:bg-white"
                 />
               </div>
             </div>
@@ -286,14 +286,14 @@ export default function AdminProfileSection({ currentAdmin, setCurrentAdmin, onL
                   required
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  className="block w-full pl-9 pr-3 py-2 bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-750 rounded-xl text-xs text-gray-900 dark:text-white focus:ring-1 focus:ring-emerald-500 focus:outline-none focus:bg-white"
+                  className="block w-full pl-9 pr-3 py-2 bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-slate-700 rounded-xl text-xs text-gray-900 dark:text-white focus:ring-1 focus:ring-emerald-500 focus:outline-none focus:bg-white"
                 />
               </div>
             </div>
           </div>
 
           {/* Change Password Block */}
-          <div className="border-t border-gray-150 dark:border-gray-700 pt-5 space-y-4">
+          <div className="border-t border-gray-200 dark:border-gray-700 pt-5 space-y-4">
             <h5 className="text-xs font-bold text-emerald-700 dark:text-emerald-450 uppercase tracking-wider">
               Ubah Sandi Keamanan (Opsional)
             </h5>
@@ -314,7 +314,7 @@ export default function AdminProfileSection({ currentAdmin, setCurrentAdmin, onL
                     type={showNewPass ? 'text' : 'password'}
                     value={newPassword}
                     onChange={(e) => setNewPassword(e.target.value)}
-                    className="block w-full pl-9 pr-10 py-2 bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-750 rounded-xl text-xs text-gray-900 dark:text-white focus:ring-1 focus:ring-emerald-500 focus:outline-none focus:bg-white"
+                    className="block w-full pl-9 pr-10 py-2 bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-slate-700 rounded-xl text-xs text-gray-900 dark:text-white focus:ring-1 focus:ring-emerald-500 focus:outline-none focus:bg-white"
                     placeholder="Sandi baru minimal 6 karakter"
                   />
                   <button
@@ -339,7 +339,7 @@ export default function AdminProfileSection({ currentAdmin, setCurrentAdmin, onL
                     type={showNewPass ? 'text' : 'password'}
                     value={confirmNewPassword}
                     onChange={(e) => setConfirmNewPassword(e.target.value)}
-                    className="block w-full pl-9 pr-10 py-2 bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-750 rounded-xl text-xs text-gray-900 dark:text-white focus:ring-1 focus:ring-emerald-500 focus:outline-none focus:bg-white"
+                    className="block w-full pl-9 pr-10 py-2 bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-slate-700 rounded-xl text-xs text-gray-900 dark:text-white focus:ring-1 focus:ring-emerald-500 focus:outline-none focus:bg-white"
                     placeholder="Ketik ulang sandi baru"
                   />
                 </div>
@@ -348,7 +348,7 @@ export default function AdminProfileSection({ currentAdmin, setCurrentAdmin, onL
           </div>
 
           {/* Verification section to authorize changes */}
-          <div className="border-t border-gray-150 dark:border-gray-700 pt-5 bg-amber-50/20 dark:bg-amber-950/10 p-4 rounded-xl border border-amber-100/50 dark:border-amber-900/30">
+          <div className="border-t border-gray-200 dark:border-gray-700 pt-5 bg-amber-50/20 dark:bg-amber-950/10 p-4 rounded-xl border border-amber-100/50 dark:border-amber-900/30">
             <label className="block text-[10px] font-black text-amber-800 dark:text-amber-300 uppercase tracking-widest mb-1.5">
               Sandi Saat Ini (Wajib Untuk Menyimpan Perubahan)
             </label>

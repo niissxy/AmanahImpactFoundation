@@ -168,7 +168,7 @@ export default function PageViews({
             <div className="absolute inset-0 opacity-15 bg-cover bg-center mix-blend-overlay pointer-events-none" style={{ backgroundImage: "url('https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?q=80&w=1200')" }}></div>
             
             <div className="max-w-3xl relative z-10 space-y-6">
-              <span className="inline-block bg-emerald-500/20 text-emerald-300 border border-emerald-55 font-extrabold px-3 py-1.5 rounded-full text-xs tracking-wider uppercase">
+              <span className="inline-block bg-emerald-500/20 text-emerald-300 border border-emerald-500 font-extrabold px-3 py-1.5 rounded-full text-xs tracking-wider uppercase">
                 {langPack.legalStatus || 'Yayasan Resmi Berizin Kemensos RI'}
               </span>
 
@@ -219,7 +219,7 @@ export default function PageViews({
           </section>
 
           {/* SECTION MASALAH & SOLUSI */}
-          <section id="section-masalah" className="scroll-mt-24 bg-white dark:bg-slate-900 border border-gray-150 dark:border-slate-800 rounded-3xl p-6 md:p-10 space-y-10 shadow-sm">
+          <section id="section-masalah" className="scroll-mt-24 bg-white dark:bg-slate-900 border border-gray-200 dark:border-slate-800 rounded-3xl p-6 md:p-10 space-y-10 shadow-sm">
             {/* Header Utama Section */}
             <div className="text-center max-w-3xl mx-auto space-y-2.5">
               <span className="text-[10px] font-black tracking-widest text-emerald-600 dark:text-emerald-400 uppercase">
@@ -330,7 +330,7 @@ export default function PageViews({
                       02
                     </div>
                     <div className="space-y-1">
-                      <h4 className="font-extrabold text-gray-905 dark:text-white text-xs">
+                      <h4 className="font-extrabold text-gray-900 dark:text-white text-xs">
                         {t('100% Penyaluran Murni & CSR Ops')}
                       </h4>
                       <p className="text-[11px] text-gray-500 dark:text-gray-400 leading-relaxed">
@@ -345,7 +345,7 @@ export default function PageViews({
                       03
                     </div>
                     <div className="space-y-1">
-                      <h4 className="font-extrabold text-gray-905 dark:text-white text-xs">
+                      <h4 className="font-extrabold text-gray-900 dark:text-white text-xs">
                         {t('Laporan Dampak & Monitoring Terukur')}
                       </h4>
                       <p className="text-[11px] text-gray-500 dark:text-gray-400 leading-relaxed">
@@ -710,7 +710,7 @@ export default function PageViews({
 
           {/* Testimonial & Donor Carousel */}
           <section id="testimonials-feed" className="grid grid-cols-1 md:grid-cols-2 gap-8 pt-4">
-            <div className="bg-white dark:bg-gray-800 border border-gray-150 dark:border-gray-750 rounded-3xl p-6 md:p-8 space-y-4">
+            <div className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-slate-700 rounded-3xl p-6 md:p-8 space-y-4">
               <span className="text-xs font-black uppercase text-amber-600 dark:text-amber-400">{t('Kata Penerima Manfaat')}</span>
               {testimonials.length > 0 ? (
                 <div className="space-y-4">
@@ -735,13 +735,13 @@ export default function PageViews({
             </div>
 
             {/* List last donations on feed */}
-            <div className="bg-white dark:bg-gray-800 border border-gray-150 dark:border-gray-750 rounded-3xl p-6 md:p-8 space-y-4 flex flex-col justify-between">
+            <div className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-slate-700 rounded-3xl p-6 md:p-8 space-y-4 flex flex-col justify-between">
               <div>
                 <span className="text-xs font-black uppercase text-emerald-600 dark:text-emerald-400 block">{langPack.donorWall || 'Daftar Kebaikan Donatur'}</span>
                 <span className="text-[10px] text-gray-400 block mt-1">{t('Solidaritas nyata kontribusi lunas masyarakat.')}</span>
               </div>
 
-              <div className="divide-y divide-gray-100 dark:divide-gray-750 max-h-48 overflow-y-auto block pr-1.5 space-y-2 text-xs">
+              <div className="divide-y divide-gray-100 dark:divide-slate-700 max-h-48 overflow-y-auto block pr-1.5 space-y-2 text-xs">
                 {donations.filter(d => d.status === 'success').slice(0, 5).map(dnat => (
                   <div key={dnat.id} className="pt-2 flex justify-between items-center font-medium">
                     <div>
@@ -769,10 +769,10 @@ export default function PageViews({
           </section>
 
           {/* SECTION TRANSPARENCY & MUTASI LEDGER */}
-          <section id="section-transparency" className="scroll-mt-24 space-y-8 bg-white dark:bg-gray-800 rounded-3xl p-6 md:p-10 border border-gray-150 dark:border-gray-750">
+          <section id="section-transparency" className="scroll-mt-24 space-y-8 bg-white dark:bg-gray-800 rounded-3xl p-6 md:p-10 border border-gray-200 dark:border-slate-700">
             <div className="text-center max-w-xl mx-auto space-y-2.5">
               <span className="text-xs uppercase font-black text-emerald-600 dark:text-emerald-400 tracking-wider block">{t('MUTASI KUNCI')}</span>
-              <h2 className="text-xl md:text-3xl font-black text-gray-955 dark:text-white">{t('Pertanggungjawaban Finansial Publik')}</h2>
+              <h2 className="text-xl md:text-3xl font-black text-gray-900 dark:text-white">{t('Pertanggungjawaban Finansial Publik')}</h2>
               <p className="text-xs text-gray-400 leading-normal">
                 {t('Yayasan menyajikan ledger penerimaan dana masuk (ledger transaksi) lunas publik secara seketika gunanya menjamin transparansi tinggi 100% bebas dari rekayasa keuangan.')}
               </p>
@@ -785,7 +785,7 @@ export default function PageViews({
               </div>
               <div className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 p-5 rounded-2xl">
                 <span className="text-xs text-slate-500 font-semibold block">{t('Sertifikat Audit Keuangan')}</span>
-                <strong className="text-2xl font-mono text-gray-955 dark:text-white block mt-1">{t('Rating WTP RI')}</strong>
+                <strong className="text-2xl font-mono text-gray-900 dark:text-white block mt-1">{t('Rating WTP RI')}</strong>
               </div>
               <div className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 p-5 rounded-2xl">
                 <span className="text-xs text-slate-500 font-semibold block">{t('Metrik Penyaluran Dampak')}</span>
@@ -794,7 +794,7 @@ export default function PageViews({
             </div>
 
             {/* Ledger mapping list */}
-            <div className="bg-white dark:bg-gray-900 border border-gray-150 dark:border-gray-800 rounded-3xl p-4 md:p-6 space-y-4">
+            <div className="bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded-3xl p-4 md:p-6 space-y-4">
               <div>
                 <span className="text-xs font-black uppercase text-emerald-800 dark:text-emerald-450 block">{t('Real-Time Ledger Transaksi Publik')}</span>
                 <span className="text-[10px] text-gray-500 block">{t('Jurnal mutasi ini diperbarui secara instan begitu kontribusi Anda tuntas diterima oleh sistem perbankan.')}</span>
@@ -803,7 +803,7 @@ export default function PageViews({
               <div className="overflow-x-auto border border-gray-100 dark:border-gray-800 rounded-xl">
                 <table className="w-full text-left text-xs border-collapse">
                   <thead>
-                    <tr className="bg-slate-100/60 dark:bg-slate-900/60 text-slate-600 dark:text-slate-400 font-extrabold border-b border-gray-300 dark:border-gray-750">
+                    <tr className="bg-slate-100/60 dark:bg-slate-900/60 text-slate-600 dark:text-slate-400 font-extrabold border-b border-gray-300 dark:border-slate-700">
                       <th className="p-3">{t('Waktu Masuk')}</th>
                       <th className="p-3">{t('Ref ID')}</th>
                       <th className="p-3">{t('Nama Donatur')}</th>
@@ -842,7 +842,7 @@ export default function PageViews({
           </section>
 
           {/* SECTION ABOUT US */}
-          <section id="section-about" className="scroll-mt-24 bg-white dark:bg-gray-800 rounded-3xl p-6 md:p-10 border border-gray-150 dark:border-gray-750 space-y-10 text-gray-700 dark:text-gray-300">
+          <section id="section-about" className="scroll-mt-24 bg-white dark:bg-gray-800 rounded-3xl p-6 md:p-10 border border-gray-200 dark:border-slate-700 space-y-10 text-gray-700 dark:text-gray-300">
             <div className="text-center max-w-2xl mx-auto space-y-3">
               <span className="text-emerald-600 dark:text-emerald-400 text-xs uppercase font-extrabold tracking-widest block">{t('SIAPAKAH KAMI')}</span>
               <h2 className="text-xl md:text-3xl font-black text-gray-900 dark:text-white tracking-tight">
@@ -881,7 +881,7 @@ export default function PageViews({
                   { name: 'Dr. Siti Aminah, S.E, M.Si', role: 'Kepala Bidang Akuntansi & Audit' },
                   { name: 'H. Muhammad Ridwan, Lc', role: 'Amil Zakat & Wakaf Syariah' }
                 ].map(board => (
-                  <div key={board.name} className="bg-gray-50 dark:bg-gray-900 rounded-xl p-4 border border-gray-100 dark:border-gray-850">
+                  <div key={board.name} className="bg-gray-50 dark:bg-gray-900 rounded-xl p-4 border border-gray-100 dark:border-slate-800">
                     <span className="font-extrabold text-gray-900 dark:text-white block tracking-tight leading-snug">{t(board.name)}</span>
                     <span className="text-[10px] text-emerald-700 dark:text-emerald-400 block mt-1">{t(board.role)}</span>
                   </div>
@@ -913,7 +913,7 @@ export default function PageViews({
               </div>
             </div>
 
-            <div id="home-csr-form-panel" className="md:col-span-5 bg-gray-50/50 dark:bg-gray-900/60 border border-gray-200 dark:border-gray-750 p-6 rounded-2xl space-y-4">
+            <div id="home-csr-form-panel" className="md:col-span-5 bg-gray-50/50 dark:bg-gray-900/60 border border-gray-200 dark:border-slate-700 p-6 rounded-2xl space-y-4">
               <div className="border-b border-gray-200 dark:border-gray-700 pb-2">
                 <h4 className="font-extrabold text-gray-950 dark:text-white">{t('Formulir Kolaborasi CSR')}</h4>
                 <p className="text-[11px] text-gray-400 mt-0.5 font-medium">{t('Ajukan konsultasi program ESG korporat, tim kami akan menjadwalkan meeting dalam 1x24 jam.')}</p>
@@ -1021,10 +1021,10 @@ export default function PageViews({
           </section>
 
           {/* SECTION VOLUNTEER */}
-          <section id="section-volunteer" className="scroll-mt-24 grid grid-cols-1 md:grid-cols-12 gap-8 items-start text-xs text-gray-700 dark:text-gray-300 bg-white dark:bg-gray-800 rounded-3xl p-6 md:p-10 border border-gray-150 dark:border-gray-750">
+          <section id="section-volunteer" className="scroll-mt-24 grid grid-cols-1 md:grid-cols-12 gap-8 items-start text-xs text-gray-700 dark:text-gray-300 bg-white dark:bg-gray-800 rounded-3xl p-6 md:p-10 border border-gray-200 dark:border-slate-700">
             <div className="md:col-span-7 space-y-6">
               <span className="text-emerald-600 dark:text-emerald-450 text-xs font-black uppercase block tracking-wider">{t('JOIN AMANAH FORCE')}</span>
-              <h2 className="text-xl md:text-3xl font-black text-gray-955 dark:text-white leading-snug tracking-tight">
+              <h2 className="text-xl md:text-3xl font-black text-gray-900 dark:text-white leading-snug tracking-tight">
                 {t('Ayo Ambil Peran dalam Barisan Penggerak Kebaikan')}
               </h2>
               <p className="leading-relaxed leading-normal font-medium text-gray-550 dark:text-gray-400">
@@ -1042,16 +1042,16 @@ export default function PageViews({
                 <div className="flex items-start gap-2.5">
                   <CheckCircle className="w-5 h-5 text-emerald-600 shrink-0 mt-0.5" />
                   <div>
-                    <strong className="text-gray-955 dark:text-white text-sm">{t('Sertifikat Relawan Kemanusiaan Resmi')}</strong>
+                    <strong className="text-gray-900 dark:text-white text-sm">{t('Sertifikat Relawan Kemanusiaan Resmi')}</strong>
                     <p className="text-gray-500 mt-1">{t('Pengakuan legalitas berkontribusi sosial resmi yang diakui tingkat kementerian.')}</p>
                   </div>
                 </div>
               </div>
             </div>
 
-            <div id="home-volunteer-form-panel" className="md:col-span-5 bg-gray-50/50 dark:bg-gray-900/60 border border-gray-200 dark:border-gray-750 p-6 rounded-2xl space-y-4">
+            <div id="home-volunteer-form-panel" className="md:col-span-5 bg-gray-50/50 dark:bg-gray-900/60 border border-gray-200 dark:border-slate-700 p-6 rounded-2xl space-y-4">
               <div className="border-b border-gray-200 dark:border-gray-700 pb-2">
-                <h4 className="font-extrabold text-gray-955 dark:text-white">{t('Pendaftaran Relawan')}</h4>
+                <h4 className="font-extrabold text-gray-900 dark:text-white">{t('Pendaftaran Relawan')}</h4>
                 <p className="text-[11px] text-gray-400 mt-0.5 font-medium">{t('Gabung barisan motor penggerak hari ini juga.')}</p>
               </div>
 
@@ -1146,16 +1146,16 @@ export default function PageViews({
           </section>
 
           {/* SECTION BLOG NEWS */}
-          <section id="section-blog" className="scroll-mt-24 space-y-8 bg-white dark:bg-gray-800 rounded-3xl p-6 md:p-10 border border-gray-150 dark:border-gray-750">
+          <section id="section-blog" className="scroll-mt-24 space-y-8 bg-white dark:bg-gray-800 rounded-3xl p-6 md:p-10 border border-gray-200 dark:border-slate-700">
             <div className="text-center max-w-xl mx-auto space-y-2">
               <span className="text-emerald-600 dark:text-emerald-455 text-xs font-black uppercase block tracking-wider">{t('KABAR EDUKASI MASLAHAT')}</span>
-              <h2 className="text-xl md:text-3xl font-black text-gray-955 dark:text-white tracking-tight font-sans">{t('Kanal Edukasi Kebaikan Yayasan')}</h2>
+              <h2 className="text-xl md:text-3xl font-black text-gray-900 dark:text-white tracking-tight font-sans">{t('Kanal Edukasi Kebaikan Yayasan')}</h2>
               <p className="text-xs text-gray-400">{t('Ikuti kupasan syariat zakat mal, transparansi filantropi, dan info update krisis air bersih.')}</p>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {blogs.map(post => (
-                <div key={post.id} className="bg-white dark:bg-gray-900 rounded-3xl border border-gray-150 dark:border-gray-800 p-5 flex flex-col sm:flex-row gap-5 items-start hover:shadow-md transition-shadow">
+                <div key={post.id} className="bg-white dark:bg-gray-900 rounded-3xl border border-gray-200 dark:border-gray-800 p-5 flex flex-col sm:flex-row gap-5 items-start hover:shadow-md transition-shadow">
                   <div className="w-full sm:w-36 h-36 rounded-2xl bg-gray-100 dark:bg-gray-800 select-none pointer-events-none overflow-hidden shrink-0">
                     <img 
                       src={post.thumbnailUrl || post.imageUrl} 
@@ -1168,7 +1168,7 @@ export default function PageViews({
                       <span className="bg-emerald-50 text-emerald-800 dark:bg-emerald-950 dark:text-emerald-300 text-[9px] font-black px-2 py-0.5 rounded tracking-wide uppercase">
                         {t(post.category)}
                       </span>
-                      <h3 className="font-extrabold text-sm text-gray-955 dark:text-white leading-snug tracking-tight font-sans">
+                      <h3 className="font-extrabold text-sm text-gray-900 dark:text-white leading-snug tracking-tight font-sans">
                         {t(post.title)}
                       </h3>
                       <p className="text-gray-500 line-clamp-2">
@@ -1187,10 +1187,10 @@ export default function PageViews({
           </section>
 
           {/* SECTION TESTIMONI (4 CARD) */}
-          <section id="section-testimoni" className="scroll-mt-24 space-y-8 bg-white dark:bg-gray-800 border border-gray-150 dark:border-gray-750 rounded-3xl p-6 md:p-10 shadow-sm transition-colors">
+          <section id="section-testimoni" className="scroll-mt-24 space-y-8 bg-white dark:bg-gray-800 border border-gray-200 dark:border-slate-700 rounded-3xl p-6 md:p-10 shadow-sm transition-colors">
             <div className="text-center max-w-2xl mx-auto space-y-2">
               <span className="text-emerald-600 dark:text-emerald-450 text-xs font-black uppercase block tracking-wider">{t('TESTIMONI DONATUR & MITRA')}</span>
-              <h2 className="text-xl md:text-3xl font-black text-gray-955 dark:text-white tracking-tight font-sans">{t('Kata Mereka tentang Amanah')}</h2>
+              <h2 className="text-xl md:text-3xl font-black text-gray-900 dark:text-white tracking-tight font-sans">{t('Kata Mereka tentang Amanah')}</h2>
               <p className="text-xs text-gray-400 leading-relaxed font-medium">{t('Bukti nyata transparansi digital, amanah, dan dampak sosial yang terukur secara nyata di lapangan.')}</p>
             </div>
 
@@ -1225,7 +1225,7 @@ export default function PageViews({
                   content: 'Alhamdulillah, berkat beasiswa penuh dan asrama dari Amanah Impact Foundation, saya dapat melanjutkan sekolah ke jenjang menengah kejuruan. Terima kasih para donatur dan yayasan!'
                 }
               ].map((testi, idx) => (
-                <div key={idx} className="bg-gray-50/50 dark:bg-gray-900/40 rounded-2xl border border-gray-150 dark:border-gray-750 p-5 flex flex-col justify-between hover:shadow-md transition-all relative group">
+                <div key={idx} className="bg-gray-50/50 dark:bg-gray-900/40 rounded-2xl border border-gray-200 dark:border-slate-700 p-5 flex flex-col justify-between hover:shadow-md transition-all relative group">
                   <Quote className="absolute top-4 right-4 w-7 h-7 text-emerald-100 dark:text-emerald-900/20 opacity-40 group-hover:scale-110 transition-transform" />
                   <div className="space-y-3">
                     <div className="flex items-center gap-1">
@@ -1238,12 +1238,12 @@ export default function PageViews({
                     </p>
                   </div>
 
-                  <div className="flex items-center gap-2.5 pt-3.5 border-t border-gray-150 dark:border-gray-750 mt-4">
+                  <div className="flex items-center gap-2.5 pt-3.5 border-t border-gray-200 dark:border-slate-700 mt-4">
                     <div className="w-9 h-9 rounded-full bg-gray-100 overflow-hidden shrink-0 select-none pointer-events-none">
                       <img src={testi.avatarUrl} alt={testi.name} className="w-full h-full object-cover" />
                     </div>
                     <div className="text-left">
-                      <strong className="text-[11px] font-extrabold text-gray-905 dark:text-white block tracking-tight leading-tight">{testi.name}</strong>
+                      <strong className="text-[11px] font-extrabold text-gray-900 dark:text-white block tracking-tight leading-tight">{testi.name}</strong>
                       <span className="text-[10px] text-emerald-600 dark:text-emerald-455 block font-bold leading-none mt-0.5">{t(testi.role)}</span>
                       <span className="text-[9px] text-gray-400 block font-medium leading-none mt-0.5">{t(testi.location)}</span>
                     </div>
@@ -1297,7 +1297,7 @@ export default function PageViews({
 
       {/* 2. ABOUT US VIEW */}
       {currentView === 'about' && (
-        <div className="bg-white dark:bg-gray-800 rounded-3xl p-6 md:p-10 border border-gray-150 dark:border-gray-750 space-y-10 text-gray-700 dark:text-gray-300">
+        <div className="bg-white dark:bg-gray-800 rounded-3xl p-6 md:p-10 border border-gray-200 dark:border-slate-700 space-y-10 text-gray-700 dark:text-gray-300">
           
           {/* Mission statements */}
           <div className="text-center max-w-2xl mx-auto space-y-3">
@@ -1339,7 +1339,7 @@ export default function PageViews({
                 { name: 'Dr. Siti Aminah, S.E, M.Si', role: 'Kepala Bidang Akuntansi & Audit' },
                 { name: 'H. Muhammad Ridwan, Lc', role: 'Amil Zakat & Wakaf Syariah' }
               ].map(board => (
-                <div key={board.name} className="bg-gray-50 dark:bg-gray-900 rounded-xl p-4 border border-gray-100 dark:border-gray-850">
+                <div key={board.name} className="bg-gray-50 dark:bg-gray-900 rounded-xl p-4 border border-gray-100 dark:border-slate-800">
                   <span className="font-extrabold text-gray-900 dark:text-white block tracking-tight leading-snug">{t(board.name)}</span>
                   <span className="text-[10px] text-emerald-700 dark:text-emerald-400 block mt-1">{t(board.role)}</span>
                 </div>
@@ -1355,7 +1355,7 @@ export default function PageViews({
         <div className="space-y-6">
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
             <div>
-              <h2 className="text-xl md:text-3xl font-black text-gray-955 dark:text-white tracking-tight">{t('Katalog Program Amanah')}</h2>
+              <h2 className="text-xl md:text-3xl font-black text-gray-900 dark:text-white tracking-tight">{t('Katalog Program Amanah')}</h2>
               <p className="text-xs text-gray-500 dark:text-gray-400 mt-1">{t('Eksplorasi target sedia, zakat, reboisasi ataupun bantuan kemanusiaan.')}</p>
             </div>
 
@@ -1382,7 +1382,7 @@ export default function PageViews({
                 className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all shrink-0 ${
                   activeCategoryFilter === catFilter
                     ? 'bg-emerald-600 text-white shadow-sm'
-                    : 'bg-white hover:bg-emerald-50 dark:bg-gray-850 text-gray-600 dark:text-gray-350 border border-gray-150 dark:border-gray-750'
+                    : 'bg-white hover:bg-emerald-50 dark:bg-slate-800 text-gray-600 dark:text-gray-350 border border-gray-200 dark:border-slate-700'
                 }`}
               >
                 {t(catFilter)}
@@ -1399,7 +1399,7 @@ export default function PageViews({
                 const percent = Math.min(100, Math.round((c.collectedAmount / c.targetAmount) * 100));
 
                 return (
-                  <div key={c.id} className="bg-white dark:bg-gray-800 rounded-3xl shadow-md border border-gray-100 dark:border-gray-750 overflow-hidden flex flex-col justify-between hover:shadow-lg dark:shadow-none transition-shadow group">
+                  <div key={c.id} className="bg-white dark:bg-gray-800 rounded-3xl shadow-md border border-gray-100 dark:border-slate-700 overflow-hidden flex flex-col justify-between hover:shadow-lg dark:shadow-none transition-shadow group">
                     <div className="relative h-44 bg-slate-900 overflow-hidden select-none">
                       <img 
                         src={c.thumbnailUrl || 'https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?q=80&w=600'} 
@@ -1426,13 +1426,13 @@ export default function PageViews({
                       </div>
 
                       {/* Progress bar */}
-                      <div className="space-y-2 pt-2 border-t border-gray-100 dark:border-gray-750">
+                      <div className="space-y-2 pt-2 border-t border-gray-100 dark:border-slate-700">
                         <div className="flex justify-between items-center text-[10px] text-gray-500 dark:text-gray-400">
                           <span>{langPack.collected}: <strong>{formatCurrency(c.collectedAmount)}</strong></span>
                           <span className="font-bold text-gray-800 dark:text-white">{percent}%</span>
                         </div>
 
-                        <div className="w-full bg-gray-100 dark:bg-gray-750 h-2 rounded-full overflow-hidden">
+                        <div className="w-full bg-gray-100 dark:bg-slate-700 h-2 rounded-full overflow-hidden">
                           <div
                             className="bg-emerald-600 h-full rounded-full transition-all"
                             style={{ width: `${percent}%` }}
@@ -1447,7 +1447,7 @@ export default function PageViews({
                       <div className="pt-2 flex gap-2 shrink-0">
                         <button
                           onClick={() => onSelectCampaign(c.slug)}
-                          className="flex-1 bg-gray-100 dark:bg-gray-750 text-gray-700 dark:text-white font-bold py-2 px-3 rounded-xl hover:bg-gray-200 text-xs transition-colors"
+                          className="flex-1 bg-gray-100 dark:bg-slate-700 text-gray-700 dark:text-white font-bold py-2 px-3 rounded-xl hover:bg-gray-200 text-xs transition-colors"
                         >
                           {t('Detail')}
                         </button>
@@ -1472,7 +1472,7 @@ export default function PageViews({
           
           <div className="text-center max-w-xl mx-auto space-y-2.5">
             <span className="text-xs uppercase font-black text-emerald-600 dark:text-emerald-400 tracking-wider block">{t('MUTASI KUNCI')}</span>
-            <h2 className="text-xl md:text-3xl font-black text-gray-955 dark:text-white">{t('Pertanggungjawaban Finansial Publik')}</h2>
+            <h2 className="text-xl md:text-3xl font-black text-gray-900 dark:text-white">{t('Pertanggungjawaban Finansial Publik')}</h2>
             <p className="text-xs text-gray-400 leading-normal">
               {t('Yayasan menyajikan ledger penerimaan dana masuk (ledger transaksi) lunas publik secara seketika gunanya menjamin transparansi tinggi 100% bebas dari rekayasa keuangan.')}
             </p>
@@ -1485,7 +1485,7 @@ export default function PageViews({
             </div>
             <div className="bg-white dark:bg-gray-800 border border-gray-200 p-5 rounded-2xl">
               <span className="text-xs text-slate-500 font-semibold block">{t('Sertifikat Audit Keuangan')}</span>
-              <strong className="text-2xl font-mono text-gray-955 dark:text-white block mt-1">{t('Rating WTP RI')}</strong>
+              <strong className="text-2xl font-mono text-gray-900 dark:text-white block mt-1">{t('Rating WTP RI')}</strong>
             </div>
             <div className="bg-white dark:bg-gray-800 border border-gray-200 p-5 rounded-2xl">
               <span className="text-xs text-slate-500 font-semibold block">{t('Metrik Penyaluran Dampak')}</span>
@@ -1494,7 +1494,7 @@ export default function PageViews({
           </div>
 
           {/* Ledger mapping list */}
-          <div className="bg-white dark:bg-gray-800 border border-gray-150 dark:border-gray-750 rounded-3xl p-6 md:p-8 space-y-4">
+          <div className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-slate-700 rounded-3xl p-6 md:p-8 space-y-4">
             <div>
               <span className="text-xs font-black uppercase text-emerald-800 dark:text-emerald-455 block">{t('Real-Time Ledger Transaksi Publik')}</span>
               <span className="text-[10px] text-gray-500 block">{t('Jurnal mutasi ini diperbarui secara instan begitu kontribusi Anda tuntas diterima oleh sistem perbankan.')}</span>
@@ -1549,7 +1549,7 @@ export default function PageViews({
           
           <div className="md:col-span-7 space-y-6">
             <span className="text-emerald-600 dark:text-emerald-450 text-xs font-black uppercase block tracking-wider">{t('CSR & ESG SOLUTIONS PARTNERSHIP')}</span>
-            <h2 className="text-xl md:text-3xl font-black text-gray-955 dark:text-white leading-snug tracking-tight">
+            <h2 className="text-xl md:text-3xl font-black text-gray-900 dark:text-white leading-snug tracking-tight">
               {t('Tingkatkan Dampak ESG Perusahaan Anda Bersama Kami')}
             </h2>
             <p className="leading-relaxed leading-normal">
@@ -1557,11 +1557,11 @@ export default function PageViews({
             </p>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              <div className="bg-gray-50 dark:bg-gray-905 p-4 rounded-xl border border-gray-100.5">
+              <div className="bg-gray-50 dark:bg-gray-900 p-4 rounded-xl border border-gray-100.5">
                 <span className="font-extrabold text-gray-900 dark:text-white text-xs block mb-1">{t('Penyalur Terakreditasi B')}</span>
                 <p className="text-gray-500">{t('Seluruh berita acara diautentikasi resmi menteri sosial & amil.')}</p>
               </div>
-              <div className="bg-gray-50 dark:bg-gray-905 p-4 rounded-xl border border-gray-100.5">
+              <div className="bg-gray-50 dark:bg-gray-900 p-4 rounded-xl border border-gray-100.5">
                 <span className="font-extrabold text-gray-900 dark:text-white text-xs block mb-1">{t('Tailored ESG Dashboard')}</span>
                 <p className="text-gray-500">{t('Dashboard digital kustom korporasi guna paparan direksi RUPS.')}</p>
               </div>
@@ -1681,11 +1681,11 @@ export default function PageViews({
 
       {/* 6. VOLUNTEER REGISTER VIEW */}
       {currentView === 'volunteer' && (
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-8 items-start text-xs text-gray-700 dark:text-gray-300 bg-white dark:bg-gray-800 rounded-3xl p-6 md:p-10 border border-gray-150 dark:border-gray-750">
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-8 items-start text-xs text-gray-700 dark:text-gray-300 bg-white dark:bg-gray-800 rounded-3xl p-6 md:p-10 border border-gray-200 dark:border-slate-700">
           
           <div className="md:col-span-7 space-y-6">
             <span className="text-emerald-600 dark:text-emerald-455 text-xs font-black uppercase block tracking-wider">{t('JOIN AMANAH FORCE')}</span>
-            <h2 className="text-xl md:text-3xl font-black text-gray-955 dark:text-white leading-snug tracking-tight">
+            <h2 className="text-xl md:text-3xl font-black text-gray-900 dark:text-white leading-snug tracking-tight">
               {t('Ayo Ambil Peran dalam Barisan Penggerak Kebaikan')}
             </h2>
             <p className="leading-relaxed leading-normal">
@@ -1814,13 +1814,13 @@ export default function PageViews({
         <div className="space-y-8">
           <div className="text-center max-w-xl mx-auto space-y-2">
             <span className="text-emerald-600 dark:text-emerald-455 text-xs font-black uppercase block tracking-wider">{t('KABAR EDUKASI MASLAHAT')}</span>
-            <h2 className="text-xl md:text-3xl font-black text-gray-955 dark:text-white tracking-tight">{t('Kanal Edukasi Kebaikan Yayasan')}</h2>
+            <h2 className="text-xl md:text-3xl font-black text-gray-900 dark:text-white tracking-tight">{t('Kanal Edukasi Kebaikan Yayasan')}</h2>
             <p className="text-xs text-gray-400">{t('Ikuti kupasan syariat zakat mal, transparansi filantropi, dan info update krisis air bersih.')}</p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {blogs.map(post => (
-              <div key={post.id} className="bg-white dark:bg-gray-800 rounded-3xl border border-gray-150 dark:border-gray-750 p-5 flex flex-col sm:flex-row gap-5 items-start hover:shadow-md transition-shadow">
+              <div key={post.id} className="bg-white dark:bg-gray-800 rounded-3xl border border-gray-200 dark:border-slate-700 p-5 flex flex-col sm:flex-row gap-5 items-start hover:shadow-md transition-shadow">
                 <div className="w-full sm:w-36 h-36 rounded-2xl bg-gray-100 select-none pointer-events-none overflow-hidden shrink-0">
                   <img 
                     src={post.thumbnailUrl || post.imageUrl} 
@@ -1834,7 +1834,7 @@ export default function PageViews({
                     <span className="bg-emerald-50 text-emerald-800 dark:bg-emerald-950 dark:text-emerald-300 text-[9px] font-black px-2 py-0.5 rounded tracking-wide uppercase">
                       {t(post.category)}
                     </span>
-                    <h3 className="font-extrabold text-sm text-gray-955 dark:text-white leading-snug tracking-tight">
+                    <h3 className="font-extrabold text-sm text-gray-900 dark:text-white leading-snug tracking-tight">
                       {t(post.title)}
                     </h3>
                     <p className="text-gray-500 line-clamp-2">
@@ -1842,7 +1842,7 @@ export default function PageViews({
                     </p>
                   </div>
 
-                  <div className="pt-2 border-t border-t-gray-100 dark:border-t-gray-750 flex items-center justify-between text-[10px] text-gray-400 mt-2">
+                  <div className="pt-2 border-t border-t-gray-100 dark:border-t-slate-700 flex items-center justify-between text-[10px] text-gray-400 mt-2">
                     <span>{t('Oleh')}: {post.author}</span>
                     <span>{new Date(post.createdDate || post.publishedDate).toLocaleDateString('id-ID')}</span>
                   </div>

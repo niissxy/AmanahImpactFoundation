@@ -274,7 +274,7 @@ export default function App() {
       
       {/* 2. DYNAMIC REAL-TIME TOAST NOTIFICATIONS */}
       {toastMessage && (
-        <div id="global-toast-notif" className="fixed bottom-6 left-6 z-50 bg-emerald-700 text-white font-extrabold px-5 py-3 rounded-xl border border-emerald-55 shadow-2xl flex items-center gap-2 animate-bounce">
+        <div id="global-toast-notif" className="fixed bottom-6 left-6 z-50 bg-emerald-700 text-white font-extrabold px-5 py-3 rounded-xl border border-emerald-500 shadow-2xl flex items-center gap-2 animate-bounce">
           <CheckCircle className="w-5 h-5 text-emerald-300 animate-spin" />
           <span className="text-xs">{toastMessage}</span>
         </div>
@@ -358,7 +358,7 @@ export default function App() {
               {isMoreDropdownOpen && (
                 <>
                   <div className="fixed inset-0 z-10" onClick={() => setIsMoreDropdownOpen(false)}></div>
-                  <div className="absolute right-0 mt-2 w-48 bg-white dark:bg-slate-800 border border-gray-150 dark:border-gray-750 rounded-xl shadow-xl py-1 z-20 animate-in fade-in slide-in-from-top-2 duration-150">
+                  <div className="absolute right-0 mt-2 w-48 bg-white dark:bg-slate-800 border border-gray-200 dark:border-slate-700 rounded-xl shadow-xl py-1 z-20 animate-in fade-in slide-in-from-top-2 duration-150">
                     {[
                       { id: 'zakat', key: 'navZakat', sectionId: 'section-zakat' },
                       { id: 'transparency', key: 'navTransparency', sectionId: 'section-transparency' },
@@ -406,7 +406,7 @@ export default function App() {
                   setIsLangDropdownOpen(!isLangDropdownOpen);
                   setIsMoreDropdownOpen(false);
                 }}
-                className="flex items-center gap-1 px-2 py-1.5 md:px-3 md:py-2 text-[10px] md:text-xs font-black text-gray-750 dark:text-gray-200 bg-white hover:bg-gray-50 dark:bg-gray-800 dark:hover:bg-gray-750 border border-gray-200 dark:border-gray-700 rounded-xl transition-colors shrink-0 cursor-pointer"
+                className="flex items-center gap-1 px-2 py-1.5 md:px-3 md:py-2 text-[10px] md:text-xs font-black text-gray-700 dark:text-gray-200 bg-white hover:bg-gray-50 dark:bg-slate-800 dark:hover:bg-slate-700 border border-gray-200 dark:border-slate-700 rounded-xl transition-colors shrink-0 cursor-pointer"
               >
                 <Globe className="w-3.5 h-3.5 text-emerald-600 dark:text-emerald-500" />
                 <span className="uppercase">{currentLang}</span>
@@ -416,7 +416,7 @@ export default function App() {
               {isLangDropdownOpen && (
                 <>
                   <div className="fixed inset-0 z-10" onClick={() => setIsLangDropdownOpen(false)}></div>
-                  <div className="absolute right-0 mt-2 w-36 bg-white dark:bg-slate-800 border border-gray-150 dark:border-gray-750 rounded-xl shadow-xl py-1 z-20 animate-in fade-in slide-in-from-top-2 duration-150">
+                  <div className="absolute right-0 mt-2 w-36 bg-white dark:bg-slate-800 border border-gray-200 dark:border-slate-700 rounded-xl shadow-xl py-1 z-20 animate-in fade-in slide-in-from-top-2 duration-150">
                     {[
                       { code: 'id', label: 'Indonesian' },
                       { code: 'en', label: 'English' },
@@ -448,7 +448,7 @@ export default function App() {
             {/* Theme Toggle Button */}
             <button
               onClick={toggleTheme}
-              className="p-1.5 md:p-2 rounded-xl border border-gray-200 dark:border-gray-700 bg-white hover:bg-gray-50 dark:bg-gray-850 dark:hover:bg-gray-750 text-gray-600 dark:text-gray-300 transition-colors cursor-pointer"
+              className="p-1.5 md:p-2 rounded-xl border border-gray-200 dark:border-slate-700 bg-white hover:bg-gray-50 dark:bg-slate-800 dark:hover:bg-slate-700 text-gray-600 dark:text-gray-300 transition-colors cursor-pointer"
               title={t('Ubah Mode Layar (Gelap/Terang)')}
             >
               {isDarkMode ? <Sun className="w-4 h-4 text-yellow-500" /> : <Moon className="w-4 h-4 text-slate-700" />}
@@ -461,7 +461,7 @@ export default function App() {
                 setIsMoreDropdownOpen(false);
                 setIsLangDropdownOpen(false);
               }}
-              className="lg:hidden p-1.5 md:p-2 rounded-xl border border-gray-200 dark:border-gray-700 bg-white hover:bg-gray-50 dark:bg-gray-850 dark:hover:bg-gray-750 text-gray-600 dark:text-gray-300 transition-colors cursor-pointer animate-in zoom-in-90 duration-150"
+              className="lg:hidden p-1.5 md:p-2 rounded-xl border border-gray-200 dark:border-slate-700 bg-white hover:bg-gray-50 dark:bg-slate-800 dark:hover:bg-slate-700 text-gray-600 dark:text-gray-300 transition-colors cursor-pointer animate-in zoom-in-90 duration-150"
               aria-label="Toggle Menu"
             >
               {isMobileMenuOpen ? <X className="w-4 h-4 text-red-500" /> : <Menu className="w-4 h-4" />}
@@ -564,17 +564,17 @@ export default function App() {
           <div id="loading-page-skeleton" className="flex flex-col items-center justify-center py-20 text-center space-y-4">
             <RefreshCw className="w-10 h-10 text-emerald-600 animate-spin" />
             <div>
-              <h3 className="font-extrabold text-gray-905 dark:text-white">{t('Menghubungkan Digital Ledger Amanah...')}</h3>
+              <h3 className="font-extrabold text-gray-900 dark:text-white">{t('Menghubungkan Digital Ledger Amanah...')}</h3>
               <p className="text-xs text-gray-400 mt-2">{t('Sedang sinkronisasi basis data, laporan dampak, & opini WTP real-time.')}</p>
             </div>
             
             {/* Skeletal placeholders cards */}
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 w-full max-w-4xl pt-8">
               {[1, 2, 3].map(skIdx => (
-                <div key={skIdx} className="bg-white dark:bg-gray-850 border border-gray-150 p-6 rounded-2xl h-44 animate-pulse space-y-4">
+                <div key={skIdx} className="bg-white dark:bg-slate-800 border border-gray-200 p-6 rounded-2xl h-44 animate-pulse space-y-4">
                   <div className="w-11 h-11 bg-gray-200 dark:bg-gray-700 rounded-full"></div>
                   <div className="w-3/4 h-3 bg-gray-200 dark:bg-gray-700 rounded"></div>
-                  <div className="w-1/2 h-2.5 bg-gray-100 dark:bg-gray-750 rounded"></div>
+                  <div className="w-1/2 h-2.5 bg-gray-100 dark:bg-slate-700 rounded"></div>
                 </div>
               ))}
             </div>
@@ -661,7 +661,7 @@ export default function App() {
                     <span className="bg-emerald-50 text-emerald-800 dark:bg-emerald-950 dark:text-emerald-300 text-xs font-black px-3 py-1 rounded uppercase tracking-wider inline-block">
                       {t(activeCampaign.category)}
                     </span>
-                    <h2 className="text-xl md:text-3xl font-black text-gray-955 dark:text-white tracking-tight leading-snug">
+                    <h2 className="text-xl md:text-3xl font-black text-gray-900 dark:text-white tracking-tight leading-snug">
                       {t(activeCampaign.title)}
                     </h2>
                     <p className="text-xs text-gray-400 mt-1 flex items-center gap-1">
@@ -669,7 +669,7 @@ export default function App() {
                     </p>
                   </div>
 
-                  <div className="w-full h-80 rounded-3xl bg-slate-900 pointer-events-none select-none overflow-hidden relative border border-gray-150">
+                  <div className="w-full h-80 rounded-3xl bg-slate-900 pointer-events-none select-none overflow-hidden relative border border-gray-200">
                     <img 
                       src={activeCampaign.thumbnailUrl || 'https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?q=80&w=1200'} 
                       alt={activeCampaign.title}
@@ -678,13 +678,13 @@ export default function App() {
                   </div>
 
                   {/* Story text */}
-                  <div className="bg-white dark:bg-gray-800 rounded-3xl p-6 md:p-8 border border-gray-150 dark:border-gray-750 space-y-4 text-gray-750 dark:text-gray-300 text-sm leading-relaxed whitespace-pre-wrap font-serif">
+                  <div className="bg-white dark:bg-gray-800 rounded-3xl p-6 md:p-8 border border-gray-200 dark:border-slate-700 space-y-4 text-slate-700 dark:text-gray-300 text-sm leading-relaxed whitespace-pre-wrap font-serif">
                     <h4 className="font-sans font-bold text-gray-900 dark:text-white text-base">{t('Rincian Latar Belakang & Alokasi Penyaluran')}</h4>
                     {t(activeCampaign.story || activeCampaign.shortDescription)}
                   </div>
 
                   {/* Dynamic Milestone of aid update */}
-                  <div id="campaign-milestone" className="border border-gray-150 dark:border-gray-750 bg-white dark:bg-gray-900 rounded-2xl p-6 space-y-3">
+                  <div id="campaign-milestone" className="border border-gray-200 dark:border-slate-700 bg-white dark:bg-gray-900 rounded-2xl p-6 space-y-3">
                     <h4 className="font-extrabold text-gray-900 dark:text-white text-xs uppercase tracking-wider block">{t('Timeline Berita Acara & Update Lapangan')}</h4>
                     
                     <div className="relative border-l border-emerald-500 pl-4 ml-2.5 py-2.5">
@@ -700,7 +700,7 @@ export default function App() {
                 </div>
 
                 {/* Left Side Action Box */}
-                <div className="lg:col-span-4 bg-gradient-to-br from-white to-slate-50 dark:from-gray-800 dark:to-slate-900 border border-gray-150 dark:border-gray-750 rounded-3xl p-6 shadow-md hover:shadow-lg transition-shadow space-y-5">
+                <div className="lg:col-span-4 bg-gradient-to-br from-white to-slate-50 dark:from-gray-800 dark:to-slate-900 border border-gray-200 dark:border-slate-700 rounded-3xl p-6 shadow-md hover:shadow-lg transition-shadow space-y-5">
                   <div className="border-b border-gray-100 dark:border-gray-700 pb-3">
                     <span className="text-[10px] text-gray-400 uppercase font-bold tracking-widest block">{t('Progress Terkumpul')}</span>
                     <strong className="text-2xl font-black text-emerald-700 dark:text-emerald-400 tracking-tight block mt-1">
@@ -749,7 +749,7 @@ export default function App() {
                       setCurrentView('campaigns');
                       setSelectedCampaignSlug('');
                     }}
-                    className="w-full bg-gray-100 hover:bg-gray-200 text-gray-700 dark:bg-gray-750 dark:text-white font-extrabold py-3 px-4 rounded-xl text-xs transition-colors"
+                    className="w-full bg-gray-100 hover:bg-gray-200 text-gray-700 dark:bg-slate-700 dark:text-white font-extrabold py-3 px-4 rounded-xl text-xs transition-colors"
                   >
                     {t('Kembali ke Program Maslahat')}
                   </button>

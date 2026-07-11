@@ -458,19 +458,19 @@ export default function AdminPanel({
         <div className="flex flex-wrap items-center gap-3 shrink-0">
           <button 
             onClick={() => setActiveTab('profile')}
-            className="flex items-center gap-2.5 text-left hover:opacity-90 transition-opacity cursor-pointer bg-white dark:bg-gray-800 border border-gray-150 dark:border-gray-750 p-2 rounded-xl shadow-xs"
+            className="flex items-center gap-2.5 text-left hover:opacity-90 transition-opacity cursor-pointer bg-white dark:bg-gray-800 border border-gray-200 dark:border-slate-700 p-2 rounded-xl shadow-xs"
             title="Ubah profil amil saya"
           >
             <img
               src={currentAdmin.photoUrl}
               alt={currentAdmin.name}
-              className="w-8.5 h-8.5 rounded-full border border-emerald-55 object-cover bg-white shrink-0"
+              className="w-8.5 h-8.5 rounded-full border border-emerald-500 object-cover bg-white shrink-0"
               onError={(e) => {
                 (e.target as HTMLImageElement).src = 'https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&q=80&w=150';
               }}
             />
             <div className="hidden sm:block">
-              <h5 className="text-[11px] font-black text-gray-850 dark:text-white leading-tight">{currentAdmin.name}</h5>
+              <h5 className="text-[11px] font-black text-slate-800 dark:text-white leading-tight">{currentAdmin.name}</h5>
               <span className="text-[9px] text-gray-400 block leading-normal mt-0.5">{currentAdmin.email}</span>
             </div>
           </button>
@@ -526,7 +526,7 @@ export default function AdminPanel({
                 className={`w-full text-left px-4 py-3 rounded-xl font-bold text-xs flex items-center gap-3 transition-colors cursor-pointer ${
                   activeTab === menu.id
                     ? 'bg-emerald-600 dark:bg-emerald-500 text-white shadow-md shadow-emerald-600/10 dark:shadow-emerald-500/10'
-                    : 'bg-white hover:bg-emerald-50/40 dark:bg-gray-850 dark:hover:bg-gray-700/60 text-gray-700 dark:text-gray-300 border border-gray-150 dark:border-gray-750'
+                    : 'bg-white hover:bg-emerald-50/40 dark:bg-slate-800 dark:hover:bg-gray-700/60 text-gray-700 dark:text-gray-300 border border-gray-200 dark:border-slate-700'
                 }`}
               >
                 <IconComp className="w-4 h-4 shrink-0" />
@@ -553,19 +553,19 @@ export default function AdminPanel({
               
               {/* KPIs Grid */}
               <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-                <div className="bg-gray-50 dark:bg-gray-900 border border-gray-100 dark:border-gray-850 p-4 rounded-2xl">
+                <div className="bg-gray-50 dark:bg-gray-900 border border-gray-100 dark:border-slate-800 p-4 rounded-2xl">
                   <span className="text-[10px] font-bold text-gray-400 dark:text-gray-500 uppercase block">Total Dana Terkumpul</span>
                   <span className="text-lg font-black text-emerald-700 dark:text-emerald-400 tracking-tight block mt-1">{formatCurrency(totalReceived)}</span>
                 </div>
-                <div className="bg-gray-50 dark:bg-gray-900 border border-gray-100 dark:border-gray-850 p-4 rounded-2xl">
+                <div className="bg-gray-50 dark:bg-gray-900 border border-gray-100 dark:border-slate-800 p-4 rounded-2xl">
                   <span className="text-[10px] font-bold text-gray-400 dark:text-gray-500 uppercase block">Pendidikan (Yatim)</span>
                   <span className="text-lg font-black text-gray-800 dark:text-white tracking-tight block mt-1">{totalYatimServed} Santri</span>
                 </div>
-                <div className="bg-gray-50 dark:bg-gray-900 border border-gray-100 dark:border-gray-850 p-4 rounded-2xl">
+                <div className="bg-gray-50 dark:bg-gray-900 border border-gray-100 dark:border-slate-800 p-4 rounded-2xl">
                   <span className="text-[10px] font-bold text-gray-400 dark:text-gray-500 uppercase block">Trx Berhasil (Rate)</span>
                   <span className="text-lg font-black text-teal-650 dark:text-teal-400 tracking-tight block mt-1">{averageSuccessRate}</span>
                 </div>
-                <div className="bg-gray-50 dark:bg-gray-900 border border-gray-100 dark:border-gray-850 p-4 rounded-2xl">
+                <div className="bg-gray-50 dark:bg-gray-900 border border-gray-100 dark:border-slate-800 p-4 rounded-2xl">
                   <span className="text-[10px] font-bold text-gray-400 dark:text-gray-500 uppercase block">Pending Review</span>
                   <span className="text-lg font-black text-amber-600 tracking-tight block mt-1">{pendingCount} Transaksi</span>
                 </div>
@@ -575,7 +575,7 @@ export default function AdminPanel({
               <div className="grid grid-cols-1 md:grid-cols-12 gap-6 pt-2">
                 
                 {/* Growth curve Recharts */}
-                <div className="md:col-span-8 bg-gray-50 dark:bg-gray-905 p-4 rounded-2xl border border-gray-100 dark:border-gray-750">
+                <div className="md:col-span-8 bg-gray-50 dark:bg-gray-900 p-4 rounded-2xl border border-gray-100 dark:border-slate-700">
                   <h4 className="text-xs font-bold uppercase tracking-wider text-gray-500 mb-4 dark:text-gray-300">
                     Akumulasi Transaksi Sukses Harian (Mei 2026)
                   </h4>
@@ -605,7 +605,7 @@ export default function AdminPanel({
                 </div>
 
                 {/* Pie Category disbursement */}
-                <div className="md:col-span-4 bg-gray-50 dark:bg-gray-905 p-4 rounded-2xl border border-gray-100 dark:border-gray-750 flex flex-col justify-between">
+                <div className="md:col-span-4 bg-gray-50 dark:bg-gray-900 p-4 rounded-2xl border border-gray-100 dark:border-slate-700 flex flex-col justify-between">
                   <h4 className="text-xs font-bold uppercase tracking-wider text-gray-500 mb-2 dark:text-gray-300">
                     Penyaluran Kategori
                   </h4>
@@ -657,7 +657,7 @@ export default function AdminPanel({
                       <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-ping shrink-0"></span>
                       Status: Live & Connected
                     </span>
-                    <h4 className="text-sm font-black text-gray-850 dark:text-white mt-1">
+                    <h4 className="text-sm font-black text-slate-800 dark:text-white mt-1">
                       Live Production & Deployment Control
                     </h4>
                     <p className="text-[11px] text-gray-500 dark:text-gray-400">
@@ -725,7 +725,7 @@ export default function AdminPanel({
               </div>
 
               {/* Campaign ADD Form */}
-              <form onSubmit={handleCreateCampaign} className="grid grid-cols-1 md:grid-cols-2 gap-4 bg-gray-55/20 dark:bg-gray-900 rounded-2xl p-4 border border-gray-150 dark:border-gray-800 text-xs text-gray-700">
+              <form onSubmit={handleCreateCampaign} className="grid grid-cols-1 md:grid-cols-2 gap-4 bg-gray-55/20 dark:bg-gray-900 rounded-2xl p-4 border border-gray-200 dark:border-gray-800 text-xs text-gray-700">
                 <div className="md:col-span-2">
                   <label className="block font-bold mb-1 dark:text-gray-350">Judul Unggulan Kampanye</label>
                   <input
@@ -733,7 +733,7 @@ export default function AdminPanel({
                     value={newCampTitle}
                     onChange={(e) => setNewCampTitle(e.target.value)}
                     placeholder="Contoh: Renovasi Fasilitas Sanitasi Air Bersih Ponpes Cilacap"
-                    className="w-full text-xs p-2.5 border border-gray-200 dark:border-gray-700 dark:bg-gray-850 dark:text-white rounded-lg focus:ring-1 focus:ring-emerald-500 outline-none"
+                    className="w-full text-xs p-2.5 border border-gray-200 dark:border-gray-700 dark:bg-slate-800 dark:text-white rounded-lg focus:ring-1 focus:ring-emerald-500 outline-none"
                     disabled={isReadOnly}
                   />
                 </div>
@@ -743,7 +743,7 @@ export default function AdminPanel({
                   <select
                     value={newCampCategory}
                     onChange={(e) => setNewCampCategory(e.target.value)}
-                    className="w-full text-xs p-2.5 border border-gray-200 dark:border-gray-700 dark:bg-gray-850 dark:text-white rounded-lg focus:ring-1 focus:ring-emerald-500 outline-none"
+                    className="w-full text-xs p-2.5 border border-gray-200 dark:border-gray-700 dark:bg-slate-800 dark:text-white rounded-lg focus:ring-1 focus:ring-emerald-500 outline-none"
                     disabled={isReadOnly}
                   >
                     {['Pendidikan', 'Wakaf', 'Pangan', 'Air Bersih', 'Kesehatan', 'Lingkungan', 'Pemberdayaan Ekonomi', 'Zakat', 'Bencana', 'Anak Yatim'].map(cat => (
@@ -759,7 +759,7 @@ export default function AdminPanel({
                     value={newCampGoal}
                     onChange={(e) => setNewCampGoal(e.target.value)}
                     placeholder="Minimal 10000000"
-                    className="w-full text-xs p-2.5 border border-gray-200 dark:border-gray-700 dark:bg-gray-850 dark:text-white rounded-lg focus:ring-1 focus:ring-emerald-500 outline-none font-bold text-slate-800 dark:text-emerald-400"
+                    className="w-full text-xs p-2.5 border border-gray-200 dark:border-gray-700 dark:bg-slate-800 dark:text-white rounded-lg focus:ring-1 focus:ring-emerald-500 outline-none font-bold text-slate-800 dark:text-emerald-400"
                     disabled={isReadOnly}
                   />
                 </div>
@@ -771,7 +771,7 @@ export default function AdminPanel({
                     value={newCampLocation}
                     onChange={(e) => setNewCampLocation(e.target.value)}
                     placeholder="Contoh: Lombok Timur, NTB"
-                    className="w-full text-xs p-2.5 border border-gray-200 dark:border-gray-700 dark:bg-gray-850 dark:text-white rounded-lg focus:ring-1 focus:ring-emerald-500 outline-none"
+                    className="w-full text-xs p-2.5 border border-gray-200 dark:border-gray-700 dark:bg-slate-800 dark:text-white rounded-lg focus:ring-1 focus:ring-emerald-500 outline-none"
                     disabled={isReadOnly}
                   />
                 </div>
@@ -783,7 +783,7 @@ export default function AdminPanel({
                     value={newCampDesc}
                     onChange={(e) => setNewCampDesc(e.target.value)}
                     placeholder="Diringkas guna card kemanusiaan..."
-                    className="w-full text-xs p-2.5 border border-gray-200 dark:border-gray-700 dark:bg-gray-850 dark:text-white rounded-lg focus:ring-1 focus:ring-emerald-500 outline-none"
+                    className="w-full text-xs p-2.5 border border-gray-200 dark:border-gray-700 dark:bg-slate-800 dark:text-white rounded-lg focus:ring-1 focus:ring-emerald-500 outline-none"
                     disabled={isReadOnly}
                   />
                 </div>
@@ -795,7 +795,7 @@ export default function AdminPanel({
                     onChange={(e) => setNewCampStory(e.target.value)}
                     rows={3}
                     placeholder="Latar belakang detail problem sosial dan solusi..."
-                    className="w-full text-xs p-2.5 border border-gray-200 dark:border-gray-700 dark:bg-gray-850 dark:text-white rounded-lg focus:ring-1 focus:ring-emerald-500 outline-none"
+                    className="w-full text-xs p-2.5 border border-gray-200 dark:border-gray-700 dark:bg-slate-800 dark:text-white rounded-lg focus:ring-1 focus:ring-emerald-500 outline-none"
                     disabled={isReadOnly}
                   />
                 </div>
@@ -821,7 +821,7 @@ export default function AdminPanel({
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-3 pb-3">
                   {campaigns.map(c => (
-                    <div key={c.id} className="border border-gray-150 dark:border-gray-700 bg-white dark:bg-gray-850 p-3.5 rounded-2xl text-xs space-y-2">
+                    <div key={c.id} className="border border-gray-200 dark:border-gray-700 bg-white dark:bg-slate-800 p-3.5 rounded-2xl text-xs space-y-2">
                       <div className="flex justify-between items-start font-bold">
                         <span className="text-gray-900 dark:text-white tracking-tight leading-snug line-clamp-1">{c.title}</span>
                         <span className="bg-emerald-50 text-emerald-800 dark:bg-emerald-950 dark:text-emerald-350 text-[9px] font-black px-2 py-0.5 rounded uppercase">
@@ -873,10 +873,10 @@ export default function AdminPanel({
               </div>
 
               {/* Transactions logs table */}
-              <div className="overflow-x-auto border border-gray-150 dark:border-gray-750 rounded-2xl bg-white dark:bg-gray-900">
+              <div className="overflow-x-auto border border-gray-200 dark:border-slate-700 rounded-2xl bg-white dark:bg-gray-900">
                 <table className="w-full text-left text-xs border-collapse">
                   <thead>
-                    <tr className="bg-slate-50 dark:bg-gray-850 text-slate-500 dark:text-gray-400 font-extrabold border-b border-gray-200 dark:border-gray-750">
+                    <tr className="bg-slate-50 dark:bg-slate-800 text-slate-500 dark:text-gray-400 font-extrabold border-b border-gray-200 dark:border-slate-700">
                       <th className="p-3.5">No Trx / Tanggal</th>
                       <th className="p-3.5">Donatur</th>
                       <th className="p-3.5">Program</th>
@@ -887,7 +887,7 @@ export default function AdminPanel({
                   </thead>
                   <tbody>
                     {donations.map((d) => (
-                      <tr key={d.id} className="border-b border-gray-100 dark:border-gray-800 hover:bg-emerald-50/5 dark:hover:bg-gray-850/20">
+                      <tr key={d.id} className="border-b border-gray-100 dark:border-gray-800 hover:bg-emerald-50/5 dark:hover:bg-slate-800/20">
                         <td className="p-3.5">
                           <span className="font-mono font-bold block">{d.id}</span>
                           <span className="text-[10px] text-gray-400 block">{new Date(d.createdDate).toLocaleDateString('id-ID')}</span>
@@ -953,10 +953,10 @@ export default function AdminPanel({
               </div>
 
               {/* Table list donors */}
-              <div className="overflow-x-auto border border-gray-150 dark:border-gray-750 rounded-2xl bg-white dark:bg-gray-900">
+              <div className="overflow-x-auto border border-gray-200 dark:border-slate-700 rounded-2xl bg-white dark:bg-gray-900">
                 <table className="w-full text-left text-xs border-collapse">
                   <thead>
-                    <tr className="bg-slate-50 dark:bg-gray-850 text-slate-500 dark:text-gray-400 font-extrabold border-b border-gray-200 dark:border-gray-750">
+                    <tr className="bg-slate-50 dark:bg-slate-800 text-slate-500 dark:text-gray-400 font-extrabold border-b border-gray-200 dark:border-slate-700">
                       <th className="p-3.5">Nama Donatur</th>
                       <th className="p-3.5">Kota / Segmen</th>
                       <th className="p-3.5">Pilar Program Terkait</th>
@@ -1074,14 +1074,14 @@ export default function AdminPanel({
                   { title: 'Proposal Terkirim / Negosiasi', code: 'proposal_sent' },
                   { title: 'Deal Won / Program Aktif', code: 'deal_won' }
                 ].map(stage => (
-                  <div key={stage.code} className="bg-gray-50 dark:bg-gray-900 border border-gray-150 dark:border-gray-800 p-4 rounded-2xl font-xs space-y-2.5">
+                  <div key={stage.code} className="bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-800 p-4 rounded-2xl font-xs space-y-2.5">
                     <span className="text-[10px] font-black text-gray-400 uppercase tracking-widest block border-b border-gray-250 pb-1.5">
                       {stage.title}
                     </span>
 
                     {/* Filter items matching pipeline status */}
                     {csrInquiries.filter(c => c.pipelineStatus === stage.code || (stage.code === 'proposal_sent' && c.pipelineStatus === 'negotiation')).map(inq => (
-                      <div key={inq.id} className="bg-white dark:bg-gray-850 border border-gray-100 dark:border-gray-750 p-3 rounded-xl space-y-1 shadow-sm">
+                      <div key={inq.id} className="bg-white dark:bg-slate-800 border border-gray-100 dark:border-slate-700 p-3 rounded-xl space-y-1 shadow-sm">
                         <span className="font-bold text-gray-950 dark:text-white block tracking-tight line-clamp-1">{inq.companyName}</span>
                         <span className="text-[10px] text-gray-500 block">PIC: {inq.picName} ({inq.position})</span>
                         <span className="text-[10px] text-emerald-700 dark:text-emerald-400 font-bold block">{inq.budgetRange}</span>
@@ -1104,7 +1104,7 @@ export default function AdminPanel({
                                 };
                                 handleUpdateCsrPipeline(inq.id, nextMap[stage.code]);
                               }}
-                              className="text-emerald-600 hover:text-emerald-700 dark:text-emerald-400 dark:hover:text-emerald-300 font-black text-[10px] border border-emerald-200 hover:bg-emerald-50 dark:border-emerald-800 dark:hover:bg-emerald-950/30 bg-white dark:bg-gray-850 px-2 py-0.5 rounded-md cursor-pointer transition-colors"
+                              className="text-emerald-600 hover:text-emerald-700 dark:text-emerald-400 dark:hover:text-emerald-300 font-black text-[10px] border border-emerald-200 hover:bg-emerald-50 dark:border-emerald-800 dark:hover:bg-emerald-950/30 bg-white dark:bg-slate-800 px-2 py-0.5 rounded-md cursor-pointer transition-colors"
                               disabled={isReadOnly || !canEvaluateInquiry}
                             >
                               Maju
@@ -1140,7 +1140,7 @@ export default function AdminPanel({
               {/* List grid */}
               <div className="grid grid-cols-1 md:grid-cols-2 gap-3 pb-3">
                 {volunteers.map(v => (
-                  <div key={v.id} className="border border-gray-150 dark:border-gray-750 bg-white dark:bg-gray-900 p-4 rounded-2xl text-xs space-y-2.5">
+                  <div key={v.id} className="border border-gray-200 dark:border-slate-700 bg-white dark:bg-gray-900 p-4 rounded-2xl text-xs space-y-2.5">
                     <div className="flex justify-between items-start font-bold">
                       <div>
                         <span className="text-gray-950 dark:text-white text-sm block tracking-tight">{v.name}</span>
@@ -1296,7 +1296,7 @@ export default function AdminPanel({
                     <select
                       value={aiTranslateLang}
                       onChange={(e) => setAiTranslateLang(e.target.value)}
-                      className="text-xs p-2.5 border border-gray-250 dark:border-gray-750 rounded-lg dark:bg-gray-900 dark:text-white"
+                      className="text-xs p-2.5 border border-gray-250 dark:border-slate-700 rounded-lg dark:bg-gray-900 dark:text-white"
                     >
                       <option value="English">English</option>
                       <option value="Arabic">Arabic (العربية)</option>
@@ -1331,9 +1331,9 @@ export default function AdminPanel({
 
               {/* AI output result panel */}
               {aiResult && (
-                <div id="ai-output-box" className="bg-gray-50 dark:bg-gray-905 border border-emerald-100 dark:border-emerald-800 p-5 rounded-2xl relative">
+                <div id="ai-output-box" className="bg-gray-50 dark:bg-gray-900 border border-emerald-100 dark:border-emerald-800 p-5 rounded-2xl relative">
                   
-                  <span className="absolute top-3 right-3 text-[9px] font-black tracking-widest text-emerald-800 bg-emerald-55 border border-emerald-150 px-2 py-0.5 rounded uppercase">
+                  <span className="absolute top-3 right-3 text-[9px] font-black tracking-widest text-emerald-800 bg-emerald-500 border border-emerald-150 px-2 py-0.5 rounded uppercase">
                     {isAiSimulated ? 'Simulated AI Draft' : 'Real-Time Gemini 3.5 Content'}
                   </span>
 
@@ -1342,11 +1342,11 @@ export default function AdminPanel({
                   </h5>
                   
                   {/* Nicely preserving markdowns */}
-                  <div className="text-xs text-gray-700 dark:text-gray-200 leading-relaxed font-semibold whitespace-pre-wrap font-serif tracking-normal border-t border-gray-150 dark:border-gray-800 pt-3">
+                  <div className="text-xs text-gray-700 dark:text-gray-200 leading-relaxed font-semibold whitespace-pre-wrap font-serif tracking-normal border-t border-gray-200 dark:border-gray-800 pt-3">
                     {aiResult}
                   </div>
 
-                  <div className="flex items-center justify-end gap-2.5 pt-3 mt-4 border-t border-gray-150 dark:border-gray-800">
+                  <div className="flex items-center justify-end gap-2.5 pt-3 mt-4 border-t border-gray-200 dark:border-gray-800">
                     <button
                       type="button"
                       id="btn-apply-draft"
@@ -1361,7 +1361,7 @@ export default function AdminPanel({
                           alert('Draf disalin! Siap dikirim via WhatsApp / Email.');
                         }
                       }}
-                      className="bg-white hover:bg-gray-100 border border-gray-200 dark:bg-gray-800 dark:hover:bg-gray-750 dark:border-gray-700 font-extrabold px-3 py-1.5 rounded-lg text-[10px] flex items-center gap-1 cursor-pointer dark:text-white"
+                      className="bg-white hover:bg-gray-100 border border-gray-200 dark:bg-gray-800 dark:hover:bg-slate-700 dark:border-gray-700 font-extrabold px-3 py-1.5 rounded-lg text-[10px] flex items-center gap-1 cursor-pointer dark:text-white"
                     >
                       {aiType === 'campaign' ? 'Gunakan Draf Certia' : 'Salin ke Clipboard'}
                     </button>

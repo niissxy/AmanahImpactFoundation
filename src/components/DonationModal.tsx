@@ -605,7 +605,7 @@ export default function DonationModal({
                     alert(t('Simulasi mengunduh PDF Kuitansi Resmi tuntas!'));
                   }}
                   id="btn-download-pdf-rcpt"
-                  className="flex-1 bg-white hover:bg-gray-100 text-gray-700 dark:bg-gray-800 dark:hover:bg-gray-750 dark:text-white border border-gray-300 dark:border-gray-700 font-bold py-2.5 px-3 rounded-xl text-xs flex items-center justify-center gap-1.5"
+                  className="flex-1 bg-white hover:bg-gray-100 text-gray-700 dark:bg-gray-800 dark:hover:bg-slate-700 dark:text-white border border-gray-300 dark:border-gray-700 font-bold py-2.5 px-3 rounded-xl text-xs flex items-center justify-center gap-1.5"
                 >
                   <Download className="w-4 h-4 text-emerald-600" />
                   {t('Unduh Kuitansi PDF')}

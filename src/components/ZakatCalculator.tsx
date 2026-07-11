@@ -350,7 +350,7 @@ export default function ZakatCalculator({ currentLang, onPayZakat, langPack }: Z
                   <Heart className="w-3.5 h-3.5 text-emerald-600 dark:text-emerald-400 shrink-0" />
                   {t('Teks Niat Zakat (Sharia Intention)')}:
                 </span>
-                <p className="font-serif italic text-right text-gray-955 dark:text-emerald-200 text-xs leading-relaxed tracking-wider">
+                <p className="font-serif italic text-right text-gray-900 dark:text-emerald-200 text-xs leading-relaxed tracking-wider">
                   {activeTab === 'income' ? niatTexts.income.arabic : niatTexts.wealth.arabic}
                 </p>
                 <p className="text-[9px] text-gray-600 dark:text-emerald-400 leading-relaxed font-semibold italic">
