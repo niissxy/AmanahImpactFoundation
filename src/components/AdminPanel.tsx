@@ -198,18 +198,20 @@ export default function AdminPanel({
       return;
     }
 
+    const payload = {
+      title: newCampTitle,
+      category: newCampCategory,
+      targetAmount: Number(newCampGoal),
+      shortDescription: newCampDesc,
+      story: newCampStory,
+      location: newCampLocation
+    };
+
     try {
       const res = await fetch('/api/campaigns', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          title: newCampTitle,
-          category: newCampCategory,
-          targetAmount: Number(newCampGoal),
-          shortDescription: newCampDesc,
-          story: newCampStory,
-          location: newCampLocation
-        })
+        body: JSON.stringify(payload)
       });
       if (res.ok) {
         alert('Kampanye berhasil didraf atau dipublikasikan!');
@@ -218,10 +220,47 @@ export default function AdminPanel({
         setNewCampStory('');
         onRefreshAll();
       } else {
-        alert('Gagal mendraf kampanye.');
+        throw new Error('API creation failed');
       }
     } catch (err) {
-      alert('Terjadi kesalahan jaringan.');
+      console.warn('Network issue or Vercel static environment. Saving campaign locally.', err);
+      try {
+        const slug = newCampTitle.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)+/g, '');
+        const newCampObj: Campaign = {
+          id: `C-LOCAL-${Date.now()}`,
+          title: newCampTitle,
+          slug,
+          category: newCampCategory,
+          status: 'active' as const,
+          isFeatured: false,
+          isUrgent: false,
+          targetAmount: Number(newCampGoal),
+          collectedAmount: 0,
+          disbursedAmount: 0,
+          beneficiaryTarget: 250,
+          beneficiaryReached: 0,
+          location: newCampLocation || 'Nasional',
+          startDate: new Date().toISOString().split('T')[0],
+          endDate: new Date(Date.now() + 30 * 24 * 3600 * 1000).toISOString().split('T')[0],
+          shortDescription: newCampDesc || newCampTitle,
+          story: newCampStory || newCampTitle,
+          fundUsage: [{ item: 'Operasional Lapangan', amount: Number(newCampGoal) }],
+          imageUrl: 'https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?auto=format&fit=crop&q=80&w=1200'
+        };
+
+        const stored = localStorage.getItem('amanah_campaigns');
+        const list = stored ? JSON.parse(stored) : [];
+        list.push(newCampObj);
+        localStorage.setItem('amanah_campaigns', JSON.stringify(list));
+        
+        alert('Kampanye berhasil didraf atau dipublikasikan (Tersimpan Lokal di Browser)!');
+        setNewCampTitle('');
+        setNewCampDesc('');
+        setNewCampStory('');
+        onRefreshAll();
+      } catch (storageErr) {
+        console.error('Local campaign write failed:', storageErr);
+      }
     }
   };
 
@@ -241,10 +280,39 @@ export default function AdminPanel({
         alert('Status donasi berhasil diubah!');
         onRefreshAll();
       } else {
-        alert('Gagal memverifikasi status.');
+        throw new Error('Verification API error');
       }
     } catch (e) {
-      alert('Kesalahan jaringan.');
+      console.warn('Network issue or Vercel static environment. Verifying donation locally.', e);
+      try {
+        const stored = localStorage.getItem('amanah_donations');
+        if (stored) {
+          const list: Donation[] = JSON.parse(stored);
+          const idx = list.findIndex(d => d.id === donationId);
+          if (idx !== -1) {
+            const oldStatus = list[idx].status;
+            list[idx].status = targetStatus as any;
+            localStorage.setItem('amanah_donations', JSON.stringify(list));
+
+            // If changing to success, also update campaign collectedAmount
+            if (targetStatus === 'success' && oldStatus !== 'success') {
+              const campsStr = localStorage.getItem('amanah_campaigns');
+              if (campsStr) {
+                const campsList: Campaign[] = JSON.parse(campsStr);
+                const cIdx = campsList.findIndex(c => c.slug === list[idx].campaignSlug);
+                if (cIdx !== -1) {
+                  campsList[cIdx].collectedAmount += list[idx].amount;
+                  localStorage.setItem('amanah_campaigns', JSON.stringify(campsList));
+                }
+              }
+            }
+          }
+        }
+        alert('Status donasi berhasil diubah (Tersimpan Lokal di Browser)!');
+        onRefreshAll();
+      } catch (storageErr) {
+        console.error('Local donation verify failed:', storageErr);
+      }
     }
   };
 
@@ -263,10 +331,27 @@ export default function AdminPanel({
         setDonorNotesText('');
         onRefreshAll();
       } else {
-        alert('Gagal menyimpan.');
+        throw new Error('API error');
       }
     } catch (err) {
-      alert('Koneksi terganggu.');
+      console.warn('Network issue or Vercel static environment. Saving donor notes locally.', err);
+      try {
+        const stored = localStorage.getItem('amanah_donors');
+        if (stored) {
+          const list: Donor[] = JSON.parse(stored);
+          const idx = list.findIndex(d => d.id === selectedDonorId);
+          if (idx !== -1) {
+            list[idx].notes = donorNotesText;
+            localStorage.setItem('amanah_donors', JSON.stringify(list));
+          }
+        }
+        alert('Catatan CRM kontak disimpan (Tersimpan Lokal di Browser)!');
+        setSelectedDonorId(null);
+        setDonorNotesText('');
+        onRefreshAll();
+      } catch (storageErr) {
+        console.error('Local donor note write failed:', storageErr);
+      }
     }
   };
 
@@ -285,9 +370,26 @@ export default function AdminPanel({
       if (res.ok) {
         alert('Status relawan diperbarui.');
         onRefreshAll();
+      } else {
+        throw new Error('API error');
       }
     } catch (err) {
-      console.error(err);
+      console.warn('Network issue or Vercel static environment. Updating volunteer status locally.', err);
+      try {
+        const stored = localStorage.getItem('amanah_volunteers');
+        if (stored) {
+          const list: Volunteer[] = JSON.parse(stored);
+          const idx = list.findIndex(v => v.id === volId);
+          if (idx !== -1) {
+            list[idx].status = nextStatus as any;
+            localStorage.setItem('amanah_volunteers', JSON.stringify(list));
+          }
+        }
+        alert('Status relawan diperbarui (Tersimpan Lokal di Browser).');
+        onRefreshAll();
+      } catch (storageErr) {
+        console.error('Local volunteer status update failed:', storageErr);
+      }
     }
   };
 
@@ -306,9 +408,26 @@ export default function AdminPanel({
       if (res.ok) {
         alert('Pipeline CSR dimajukan!');
         onRefreshAll();
+      } else {
+        throw new Error('API error');
       }
     } catch (err) {
-      console.error(err);
+      console.warn('Network issue or Vercel static environment. Advancing CSR pipeline status locally.', err);
+      try {
+        const stored = localStorage.getItem('amanah_csr');
+        if (stored) {
+          const list: CsrInquiry[] = JSON.parse(stored);
+          const idx = list.findIndex(c => c.id === csrId);
+          if (idx !== -1) {
+            list[idx].pipelineStatus = nextPipeline as any;
+            localStorage.setItem('amanah_csr', JSON.stringify(list));
+          }
+        }
+        alert('Pipeline CSR dimajukan (Tersimpan Lokal di Browser)!');
+        onRefreshAll();
+      } catch (storageErr) {
+        console.error('Local CSR pipeline status update failed:', storageErr);
+      }
     }
   };
 

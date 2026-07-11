@@ -21,6 +21,11 @@ import {
   OrganizationInfo, Campaign, Donation, Donor, Volunteer, 
   CsrInquiry, Report, BlogPost, Testimonial, FAQ, AdminUser 
 } from './types';
+import {
+  organizationMock, campaignsMock, donationsMock, donorsMock,
+  volunteersMock, csrInquiriesMock, reportsMock, blogsMock,
+  testimonialsMock, faqsMock
+} from './mockData';
 
 export default function App() {
   const [currentLang, setCurrentLang] = useState<string>('id');
@@ -154,41 +159,46 @@ export default function App() {
     return new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR', minimumFractionDigits: 0 }).format(val);
   };
 
-  // 1. Core Data fetching from our Express server
+  // 1. Core Data fetching from our Express server with robust client fallback
   const fetchAllData = async () => {
     setIsLoading(true);
     setErrorText('');
     try {
-      const [
-        resOrg, resCamp, resDon, resDnr, resVol, resCsr, resRep, resBgs, resTst, resFqs
-      ] = await Promise.all([
-        fetch('/api/organization'),
-        fetch('/api/campaigns'),
-        fetch('/api/donations'),
-        fetch('/api/donors'),
-        fetch('/api/volunteers'),
-        fetch('/api/csr-inquiries'),
-        fetch('/api/reports'),
-        fetch('/api/blogs'),
-        fetch('/api/testimonials'),
-        fetch('/api/faqs')
-      ]);
-
-      if (!resCamp.ok) {
-        throw new Error(t('Gagal berkomunikasi dengan server-side API'));
-      }
+      // Helper to fetch with localStorage and mockData fallback
+      const fetchWithFallback = async (endpoint: string, localKey: string, fallbackMock: any) => {
+        try {
+          const res = await fetch(endpoint);
+          if (res.ok) {
+            const data = await res.json();
+            localStorage.setItem(localKey, JSON.stringify(data));
+            return data;
+          }
+        } catch (e) {
+          console.warn(`Fetch to ${endpoint} failed, falling back to local storage or mock.`, e);
+        }
+        const stored = localStorage.getItem(localKey);
+        if (stored) {
+          try {
+            return JSON.parse(stored);
+          } catch (e) {
+            // ignore JSON parse error
+          }
+        }
+        localStorage.setItem(localKey, JSON.stringify(fallbackMock));
+        return fallbackMock;
+      };
 
       const [org, camp, don, dnr, vol, csr, rep, bgs, tst, fqs] = await Promise.all([
-        resOrg.json(),
-        resCamp.json(),
-        resDon.json(),
-        resDnr.json(),
-        resVol.json(),
-        resCsr.json(),
-        resRep.json(),
-        resBgs.json(),
-        resTst.json(),
-        resFqs.json()
+        fetchWithFallback('/api/organization', 'amanah_org', organizationMock),
+        fetchWithFallback('/api/campaigns', 'amanah_campaigns', campaignsMock),
+        fetchWithFallback('/api/donations', 'amanah_donations', donationsMock),
+        fetchWithFallback('/api/donors', 'amanah_donors', donorsMock),
+        fetchWithFallback('/api/volunteers', 'amanah_volunteers', volunteersMock),
+        fetchWithFallback('/api/csr-inquiries', 'amanah_csr', csrInquiriesMock),
+        fetchWithFallback('/api/reports', 'amanah_reports', reportsMock),
+        fetchWithFallback('/api/blogs', 'amanah_blogs', blogsMock),
+        fetchWithFallback('/api/testimonials', 'amanah_testimonials', testimonialsMock),
+        fetchWithFallback('/api/faqs', 'amanah_faqs', faqsMock)
       ]);
 
       setOrgInfo(org);
@@ -203,8 +213,17 @@ export default function App() {
       setFaqs(fqs);
 
     } catch (err: any) {
-      console.error(err);
-      setErrorText(t('Gagal mengunduh basis data dari server. Pastikan dev_server menyala.'));
+      console.error('All-dataset fetching failure, initializing defaults directly:', err);
+      setOrgInfo(organizationMock);
+      setCampaigns(campaignsMock);
+      setDonations(donationsMock);
+      setDonors(donorsMock);
+      setVolunteers(volunteersMock);
+      setCsrInquiries(csrInquiriesMock);
+      setReports(reportsMock);
+      setBlogs(blogsMock);
+      setTestimonials(testimonialsMock);
+      setFaqs(faqsMock);
     } finally {
       setIsLoading(false);
     }
