@@ -511,9 +511,50 @@ const blogs: BlogPost[] = [
 ];
 
 const testimonials: Testimonial[] = [
-  { id: 'T-01', name: 'Siti Aminah', role: 'Orang Tua Penerima Beasiswa', content: 'Bantuan beasiswa bulanan AIF membuat anak saya bisa tetap sekolah dan membeli perlengkapan sekolah dasar tuntas tanpa cemas.', rating: 5, type: 'beneficiary' },
-  { id: 'T-02', name: 'Budi Santoso', role: 'Donatur Rutin', content: 'Amanah Impact Foundation luar biasa transparan. Setiap bulan saya mendapatkan PDF laporan penyaluran yang didokumentasikan mendetail!', rating: 5, type: 'donor' },
-  { id: 'T-03', name: 'Michael Tan', role: 'Head of CSR PT Surya Digital', content: 'Sistem monitoring CSR AIF dan peta distribusinya sangat membantu penyusunan laporan tahunan ESG korporasi kami secara presisi.', rating: 5, type: 'csr_partner' }
+  { 
+    id: 'T-01', 
+    name: 'Siti Aminah', 
+    role: 'Orang Tua Penerima Beasiswa', 
+    content: 'Bantuan beasiswa bulanan AIF membuat anak saya bisa tetap sekolah dan membeli perlengkapan sekolah dasar tuntas tanpa cemas.', 
+    message: 'Bantuan beasiswa bulanan AIF membuat anak saya bisa tetap sekolah dan membeli perlengkapan sekolah dasar tuntas tanpa cemas.',
+    avatarUrl: 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=150',
+    location: 'Sukabumi',
+    rating: 5, 
+    type: 'beneficiary' 
+  },
+  { 
+    id: 'T-04', 
+    name: 'Ustadz Ahmad Fauzi', 
+    role: 'Penerima Manfaat Sumur Bor', 
+    content: 'Alhamdulillah, sumur bor dari Amanah Impact Foundation mengalirkan air bersih yang sangat melimpah untuk wudhu 300 santri pesantren kami di Cilacap.', 
+    message: 'Alhamdulillah, sumur bor dari Amanah Impact Foundation mengalirkan air bersih yang sangat melimpah untuk wudhu 300 santri pesantren kami di Cilacap.',
+    avatarUrl: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=150',
+    location: 'Cilacap',
+    rating: 5, 
+    type: 'beneficiary' 
+  },
+  { 
+    id: 'T-02', 
+    name: 'Budi Santoso', 
+    role: 'Donatur Rutin', 
+    content: 'Amanah Impact Foundation luar biasa transparan. Setiap bulan saya mendapatkan PDF laporan penyaluran yang didokumentasikan mendetail!', 
+    message: 'Amanah Impact Foundation luar biasa transparan. Setiap bulan saya mendapatkan PDF laporan penyaluran yang didokumentasikan mendetail!',
+    avatarUrl: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=150',
+    location: 'Jakarta',
+    rating: 5, 
+    type: 'donor' 
+  },
+  { 
+    id: 'T-03', 
+    name: 'Michael Tan', 
+    role: 'Head of CSR PT Surya Digital', 
+    content: 'Sistem monitoring CSR AIF dan peta distribusinya sangat membantu penyusunan laporan tahunan ESG korporasi kami secara presisi.', 
+    message: 'Sistem monitoring CSR AIF dan peta distribusinya sangat membantu penyusunan laporan tahunan ESG korporasi kami secara presisi.',
+    avatarUrl: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?q=80&w=150',
+    location: 'Surabaya',
+    rating: 5, 
+    type: 'csr_partner' 
+  }
 ];
 
 const faqs: FAQ[] = [

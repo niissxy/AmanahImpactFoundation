@@ -7,10 +7,12 @@ import React, { useState } from 'react';
 import { 
   Heart, MapPin, Share2, ClipboardCheck, ArrowRight, ShieldCheck, 
   Search, Users, Calendar, Award, Building2, Smile, ArrowUpRight, CheckCircle,
-  AlertCircle, Play, Smartphone, Monitor, Info, Sparkles, Star, Quote
+  AlertCircle, Play, Smartphone, Monitor, Info, Sparkles, Star, Quote,
+  ChevronLeft, ChevronRight
 } from 'lucide-react';
 import { Campaign, Donation, Donor, Volunteer, CsrInquiry, BlogPost, FAQ, Testimonial } from '../types';
 import ZakatCalculator from './ZakatCalculator';
+import InteractiveMap from './InteractiveMap';
 import { getTranslation } from '../translations';
 
 interface PageViewsProps {
@@ -68,6 +70,9 @@ export default function PageViews({
 
   // Map interactive state
   const [hoveredRegion, setHoveredRegion] = useState<{ name: string; amount: string; desc: string } | null>(null);
+
+  // Active beneficiary testimonial index
+  const [activeBeneficiaryIndex, setActiveBeneficiaryIndex] = useState(0);
 
   const formatCurrency = (val: number) => {
     return new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR', minimumFractionDigits: 0 }).format(val);
@@ -632,67 +637,26 @@ export default function PageViews({
                 {langPack.petaDistribusi || 'Peta Distribusi Kemanusiaan Se-Indonesia'}
               </h3>
               <p className="text-xs text-gray-400 mt-1">
-                {t('Arahkan kursor atau sentuh kota sebaran emas kedaulatan di bawah ini untuk melihat total penyaluran donasi dan proyek kemaslahatan yang sedang berjalan di kawasan tersebut.')}
+                {t('Klik penanda lokasi pada peta interaktif asli di bawah ini untuk melihat rincian penyaluran donasi dan program kemaslahatan terpercaya.')}
               </p>
             </div>
 
-            {/* Custom high-contrast responsive SVG Map Layout */}
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center bg-radial from-slate-900 to-slate-950 p-4 rounded-2xl border border-slate-800">
-              
-              <div className="lg:col-span-8 relative flex justify-center items-center h-64 md:h-80 w-full bg-slate-950/40 rounded-xl overflow-hidden p-2">
-                
-                {/* SVG Outline Vector of Indonesia Archipelago stylised */}
-                <svg viewBox="0 0 1000 400" className="w-full h-full text-slate-800 stroke-slate-700 select-none opacity-90 stroke-1 fill-none">
-                  {/* Sumatra stylized path */}
-                  <polygon points="50,120 120,40 220,110 160,250 80,210" fill="#334155" opacity="0.3" className="hover:fill-emerald-800/20 active:fill-emerald-800/20 cursor-pointer transition-colors" />
-                  
-                  {/* Java stylized path */}
-                  <polygon points="120,290 320,285 360,290 350,330 140,320" fill="#334155" opacity="0.3" className="hover:fill-emerald-800/20 active:fill-emerald-800/20 cursor-pointer transition-all" />
-                  
-                  {/* Kalimantan stylized path */}
-                  <polygon points="300,100 450,80 500,120 460,225 310,210" fill="#334155" opacity="0.3" className="hover:fill-emerald-800/20 cursor-pointer transition-all" />
-
-                  {/* Sulawesi stylized path */}
-                  <polygon points="580,120 620,110 650,210 600,240 550,190" fill="#334155" opacity="0.3" className="hover:fill-emerald-805/20 cursor-pointer transition-all" />
-
-                  {/* Bali & Nusa Tenggara stylized path */}
-                  <polygon points="400,325 610,320 640,345 420,350" fill="#334155" opacity="0.3" className="hover:fill-emerald-810/20 cursor-pointer transition-all" />
-
-                  {/* Papua stylized path */}
-                  <polygon points="800,150 950,150 940,290 850,280 810,190" fill="#334155" opacity="0.3" className="hover:fill-emerald-820/20 cursor-pointer transition-all" />
-                </svg>
-
-                {/* Animated coordinate pulses points */}
-                {indonesiaRegions.map((reg) => (
-                  <button
-                    key={reg.name}
-                    id={`map-node-${reg.name.toLowerCase().replace(/[^a-z]/g, '')}`}
-                    onMouseEnter={() => setHoveredRegion({ name: t(reg.name), amount: reg.amount, desc: t(reg.desc) })}
-                    onClick={() => {
-                      setHoveredRegion({ name: t(reg.name), amount: reg.amount, desc: t(reg.desc) });
-                      alert(`${t('Regional')}: ${t(reg.name)}\n${t('Total Disalurkan')}: ${reg.amount}\n${t('Program')}: ${t(reg.desc)}`);
-                    }}
-                    style={{ left: reg.cx, top: reg.cy }}
-                    className="absolute p-2 -translate-x-1/2 -translate-y-1/2 cursor-pointer group"
-                    title={t(reg.name)}
-                  >
-                    <span className="absolute inset-0 bg-emerald-500 rounded-full animate-ping opacity-75"></span>
-                    <span className="relative block w-3.5 h-3.5 bg-emerald-400 border-2 border-white rounded-full shadow shadow-emerald-600/50"></span>
-                  </button>
-                ))}
+              <div className="lg:col-span-8 w-full">
+                <InteractiveMap currentLang={currentLang} t={t} onSelectRegion={setHoveredRegion} />
               </div>
 
               {/* Highlight Region Panel */}
               <div className="lg:col-span-4 bg-slate-950/50 border border-slate-800 rounded-xl p-5 min-h-[140px] flex flex-col justify-center space-y-2">
                 {hoveredRegion ? (
                   <>
-                    <div className="flex items-center gap-1.5 text-emerald-450 font-black">
+                    <div className="flex items-center gap-1.5 text-emerald-400 font-black">
                       <MapPin className="w-4 h-4 text-emerald-400 fill-none" />
                       <span className="font-extrabold text-sm">{hoveredRegion.name}</span>
                     </div>
                     <div className="space-y-1.5">
                       <span className="text-[10px] text-gray-500 uppercase font-bold tracking-widest block">{t('Total Penyaluran Sukses')}</span>
-                      <strong className="text-xl font-mono text-emerald-450">{hoveredRegion.amount}</strong>
+                      <strong className="text-xl font-mono text-emerald-400">{hoveredRegion.amount}</strong>
                       <p className="text-xs text-gray-400 leading-normal font-semibold">
                         {hoveredRegion.desc}
                       </p>
@@ -700,7 +664,7 @@ export default function PageViews({
                   </>
                 ) : (
                   <div className="text-center py-6 text-gray-500 text-xs">
-                    <p>{t('Sentuh salah satu bintik hijau')} <span className="inline-block w-2.5 h-2.5 bg-emerald-400 rounded-full"></span> {t('pada peta kepulauan untuk menelaah rincian program.')}</p>
+                    <p>{t('Klik penanda lokasi')} <span className="inline-block w-2.5 h-2.5 bg-emerald-400 rounded-full"></span> {t('pada peta untuk melihat rincian program.')}</p>
                   </div>
                 )}
               </div>
@@ -710,27 +674,86 @@ export default function PageViews({
 
           {/* Testimonial & Donor Carousel */}
           <section id="testimonials-feed" className="grid grid-cols-1 md:grid-cols-2 gap-8 pt-4">
-            <div className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-slate-700 rounded-3xl p-6 md:p-8 space-y-4">
-              <span className="text-xs font-black uppercase text-amber-600 dark:text-amber-400">{t('Kata Penerima Manfaat')}</span>
-              {testimonials.length > 0 ? (
-                <div className="space-y-4">
-                  <p className="font-serif italic text-gray-600 dark:text-gray-300 text-sm md:text-base leading-relaxed">
-                    "{t(testimonials[0].message)}"
-                  </p>
-                  <div className="flex items-center gap-3">
-                    <img 
-                      src={testimonials[0].avatarUrl} 
-                      alt={testimonials[0].name} 
-                      className="w-10 h-10 rounded-full shrink-0 select-none pointer-events-none" 
-                    />
-                    <div>
-                      <span className="font-bold text-gray-900 dark:text-white text-xs block">{testimonials[0].name}</span>
-                      <span className="text-[10px] text-gray-400 block">{t(testimonials[0].role)} • {t(testimonials[0].location)}</span>
+            <div className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-slate-700 rounded-3xl p-6 md:p-8 flex flex-col justify-between h-full min-h-[280px]">
+              <div>
+                <div className="flex justify-between items-center mb-4">
+                  <span className="text-xs font-black uppercase text-amber-600 dark:text-amber-400">{t('Kata Penerima Manfaat')}</span>
+                  {testimonials.filter(tst => tst.type === 'beneficiary').length > 1 && (
+                    <div className="flex items-center gap-1.5">
+                      <button
+                        onClick={() => setActiveBeneficiaryIndex(prev => (prev - 1 + testimonials.filter(tst => tst.type === 'beneficiary').length) % testimonials.filter(tst => tst.type === 'beneficiary').length)}
+                        className="p-1 rounded-lg bg-gray-50 hover:bg-gray-100 dark:bg-gray-900/50 dark:hover:bg-gray-950 text-gray-500 hover:text-gray-800 dark:text-gray-400 dark:hover:text-white transition-colors cursor-pointer border border-gray-150 dark:border-slate-800"
+                        title={t('Sebelumnya')}
+                      >
+                        <ChevronLeft className="w-4 h-4" />
+                      </button>
+                      <button
+                        onClick={() => setActiveBeneficiaryIndex(prev => (prev + 1) % testimonials.filter(tst => tst.type === 'beneficiary').length)}
+                        className="p-1 rounded-lg bg-gray-50 hover:bg-gray-100 dark:bg-gray-900/50 dark:hover:bg-gray-950 text-gray-500 hover:text-gray-800 dark:text-gray-400 dark:hover:text-white transition-colors cursor-pointer border border-gray-150 dark:border-slate-800"
+                        title={t('Selanjutnya')}
+                      >
+                        <ChevronRight className="w-4 h-4" />
+                      </button>
                     </div>
-                  </div>
+                  )}
                 </div>
-              ) : (
-                <span className="text-xs text-gray-400 italic">{t('No testimonials registered')}</span>
+
+                {(() => {
+                  const beneficiaries = testimonials.filter(tst => tst.type === 'beneficiary');
+                  const listToUse = beneficiaries.length > 0 ? beneficiaries : testimonials;
+                  if (listToUse.length === 0) {
+                    return <span className="text-xs text-gray-400 italic">{t('Belum ada testimoni terdaftar')}</span>;
+                  }
+                  const index = activeBeneficiaryIndex % listToUse.length;
+                  const item = listToUse[index];
+                  return (
+                    <div key={item.id} className="space-y-4 animate-in fade-in slide-in-from-right-2 duration-300">
+                      <div className="relative">
+                        <Quote className="absolute -top-1 -left-2 w-8 h-8 text-amber-100 dark:text-amber-900/20 opacity-40 shrink-0 pointer-events-none" />
+                        <p className="font-serif italic text-gray-600 dark:text-gray-300 text-sm md:text-base leading-relaxed pl-6">
+                          "{t(item.message || item.content)}"
+                        </p>
+                      </div>
+                      
+                      <div className="flex items-center gap-3 pt-2">
+                        {item.avatarUrl ? (
+                          <img 
+                            src={item.avatarUrl} 
+                            alt={item.name} 
+                            className="w-11 h-11 rounded-full object-cover shrink-0 select-none pointer-events-none border border-amber-100 dark:border-slate-700" 
+                          />
+                        ) : (
+                          <div className="w-11 h-11 rounded-full bg-amber-100 dark:bg-amber-900/40 text-amber-700 dark:text-amber-300 flex items-center justify-center font-bold text-sm shrink-0">
+                            {item.name.charAt(0)}
+                          </div>
+                        )}
+                        <div>
+                          <span className="font-extrabold text-gray-900 dark:text-white text-xs block leading-tight">{item.name}</span>
+                          <span className="text-[10px] text-gray-400 dark:text-gray-450 block font-medium mt-0.5">
+                            {t(item.role)} {item.location ? `• ${t(item.location)}` : ''}
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+                  );
+                })()}
+              </div>
+              
+              {/* Dots indicators */}
+              {testimonials.filter(tst => tst.type === 'beneficiary').length > 1 && (
+                <div className="flex items-center gap-1.5 justify-center mt-4">
+                  {testimonials.filter(tst => tst.type === 'beneficiary').map((_, idx) => (
+                    <button
+                      key={idx}
+                      onClick={() => setActiveBeneficiaryIndex(idx)}
+                      className={`h-1.5 rounded-full transition-all cursor-pointer ${
+                        idx === (activeBeneficiaryIndex % testimonials.filter(tst => tst.type === 'beneficiary').length)
+                          ? 'w-4 bg-amber-500'
+                          : 'w-1.5 bg-gray-200 dark:bg-slate-700 hover:bg-gray-300'
+                      }`}
+                    />
+                  ))}
+                </div>
               )}
             </div>
 

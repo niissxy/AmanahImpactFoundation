@@ -8,3 +8,10 @@
   --font-serif: "Playfair Display", Georgia, serif;
   --font-mono: "JetBrains Mono", ui-monospace, monospace;
 }
+
+/* Leaflet Custom DivIcon reset */
+.custom-div-icon {
+  background: transparent !important;
+  border: none !important;
+}
+
